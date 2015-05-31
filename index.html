@@ -1,0 +1,163 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="css/reset.css"/>
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/animations.css"/>
+	<link rel="stylesheet" href="css/font-awesome.css"/>
+	<script src="js/jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+			console.log("Ready.");
+			$("#toggleInfo, #toggleMain").on("click",function(){
+				console.log("Info toggle clicked.");
+				if($(".info-area").attr("visible") == 1) {
+					console.log("Info area is marked as visible.");
+					$(".info-area").removeClass("main-frame_slideUp");
+					$(".info-area").addClass("main-frame_slideDown");
+					$(".info-area").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+						$(".info-area").hide();
+						$(".info-area").attr("visible","0");
+					});
+
+				} else {
+					console.log("Info area is marked as invisible.");
+					$(".info-area").show();
+					$(".info-area").attr("visible","1");
+					$(".info-area").removeClass("main-frame_slideDown");
+					$(".info-area").addClass("main-frame_slideUp");
+				}
+			});
+
+			$(".user-wrapper, #toggleUser").on("click",function(){
+				console.log("Account info toggle clicked.");
+				if($(".user-wrapper").attr("visible") == 1) {
+					console.log("User account area is marked as visible.");
+					$(".user-wrapper").removeClass("user_slideUp");
+					$(".user-wrapper").addClass("user_slideDown");
+					$(".user-caret").removeClass("rotatef");
+					$(".user-caret").addClass("rotateb");
+					$(".user-wrapper").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+						$(".user-wrapper").attr("visible","0");
+					});
+				} else {
+					console.log("User account area is marked as invisible.");
+					$(".user-wrapper").attr("visible","1");
+					$(".user-wrapper").removeClass("user_slideDown");
+					$(".user-wrapper").addClass("user_slideUp");
+					$(".user-caret").removeClass("rotateb");
+					$(".user-caret").addClass("rotatef");
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="info-area" visible="0">
+			<div class="content-wrapper">
+				<p id="toggleMain">Track info and buttons will be down here now</p>
+			</div>
+		</div>
+		<div class="main-area">
+			<div class="content-wrapper">
+				<div class="header-wrapper">
+					<h1>Library</h1>
+				</div>
+				<div class="main-table-wrapper">
+					<table class="main-table">
+						<tr>
+							<td>#</td>
+							<td></td>
+							<td></td>
+							<td>Title</td>
+							<td>Artist</td>
+							<td>Added by</td>
+							<td>Added on</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td><img src="images/test/flower.jpg"/></td>
+							<td><img src="images/test/flower.jpg"/></td>
+							<td>Sample Song</td>
+							<td>Someone</td>
+							<td>TheBlackParrot</td>
+							<td>May 31st, 2015, 02:28 CDT</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td><img src="images/test/flower.jpg"/></td>
+							<td><img src="images/test/flower.jpg"/></td>
+							<td>Another Sample Song</td>
+							<td>Someone Else</td>
+							<td>TheBlackParrot</td>
+							<td>September 30th, 2015, 17:14 CDT</td>
+						</tr>
+						<tr>
+							<td>1,187</td>
+							<td><img src="images/test/flower.jpg"/></td>
+							<td><img src="images/test/flower.jpg"/></td>
+							<td>Some Other Sample Song</td>
+							<td>Literally Anybody</td>
+							<td>TheBlackParrot</td>
+							<td>November 11th, 2015, 09:41 CST</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="menu-drawer">
+			<div class="menu-wrapper">
+				<div id="toggleInfo" class="menu-item">
+					<span class="menu-item-wrapper">
+						<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle info area
+					</span>
+				</div>
+				<div id="toggleUser" class="menu-item">
+					<span class="menu-item-wrapper">
+						<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle user account area
+					</span>
+				</div>
+			</div>
+			<div class="user-wrapper" visible="0">
+				<div class="user-header">
+					<img src="images/test/flower.jpg" class="user-av"/> TheBlackParrot
+					<span class="user-caret">
+						<i class="fa fa-caret-up"></i>&nbsp;
+					</span>
+				</div>
+				<div class="user-menu-wrapper">
+					<div class="user-menu-item">
+						<span class="user-menu-item-wrapper">
+							<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle user account area
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg_img"><img src="images/test/flower.jpg"/></div>
+		<div class="playing-drawer">
+			<div class="playing-stats">
+				<div class="elapsed-time">0:34</div>
+				<div class="progress-bar-wrapper">
+					<div class="progress-bar-filled" style="width: calc(100% - 86% - 116px);"></div>
+					<div class="progress-bar-unfilled" style="width: calc(100% - 116px);"></div>
+				</div>
+				<div class="total-time">3:51</div>
+			</div>
+			<div class="playing-wrapper">
+				<div class="playing-album-art">
+					<img src="images/test/flower.jpg"/>
+				</div>
+				<div class="playing-info">
+					<span class="title">Sample Song</span><br/>
+					<span class="artist">Someone</span><br/>
+					<span class="info">Added by TheBlackParrot from SoundCloud</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

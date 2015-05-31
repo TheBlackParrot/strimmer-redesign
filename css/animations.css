@@ -1,0 +1,143 @@
+.main-frame_slideUp {
+	animation-name: main-frame_KFslideUp;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: main-frame_KFslideUp;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@keyframes main-frame_KFslideUp {
+	to {
+		transform: translateY(calc(-100% - 96px));
+	}
+}
+@-webkit-keyframes main-frame_KFslideUp {
+	to {
+		-webkit-transform: translateY(calc(-100% - 96px));
+	}
+}
+.main-frame_slideDown {
+	animation-name: main-frame_KFslideDown;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: main-frame_KFslideDown;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes main-frame_KFslideDown {
+	from {
+		transform: translateY(calc(-100% - 96px));
+	}
+	to {
+		transform: translateY(calc(100% - 96px));
+	}
+}
+@-webkit-keyframes main-frame_KFslideDown {
+	from {
+		-webkit-transform: translateY(calc(-100% - 96px));
+	}
+	to {
+		-webkit-transform: translateY(calc(100% - 96px));
+	}
+}
+
+
+.user_slideUp {
+	animation-name: user_KFslideUp;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: user_KFslideUp;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes user_KFslideUp {
+	to {
+		transform: translateY(calc(-100% + 64px));
+	}
+}
+@-webkit-keyframes user_KFslideUp {
+	to {
+		-webkit-transform: translateY(calc(-100% + 64px));
+	}
+}
+
+.user_slideDown {
+	animation-name: user_KFslideDown;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: user_KFslideDown;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes user_KFslideDown {
+	from {
+		transform: translateY(calc(-100% + 64px));
+	}
+	to {
+		transform: translateY(0%);
+	}
+}
+@-webkit-keyframes user_KFslideDown {
+	from {
+		-webkit-transform: translateY(calc(-100% + 64px));
+	}
+	to {
+		-webkit-transform: translateY(0%);
+	}
+}
+
+.rotatef i {
+	animation-name: rotate_KF;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: rotate_KF;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes rotate_KF {
+	to {
+		transform: rotate(180deg);
+	}
+}
+@-webkit-keyframes rotate_KF {
+	to {
+		-webkit-transform: rotate(180deg);
+	}
+}
+.rotateb i {
+	animation-name: rotateb_KF;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: rotateb_KF;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes rotateb_KF {
+	from {
+		transform: rotate(180deg);
+	}
+	to {
+		transform: rotate(0deg);
+	}
+}
+@-webkit-keyframes rotateb_KF {
+	from {
+		-webkit-transform: rotate(180deg);
+	}
+	to {
+		-webkit-transform: rotate(0deg);
+	}
+}
