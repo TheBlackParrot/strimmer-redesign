@@ -60,7 +60,7 @@ h1 {
 	position: fixed;
 	left: 224px;
 	z-index: 4;
-	background-color: rgba(0,0,0,0.75);
+	background-color: rgba(0,0,0,0.5);
 	color: #fff;
 	display: none;
 	top: 100vh;
@@ -297,7 +297,7 @@ h1 {
 .playing-album-art img {
 	width: 64px;
 	height: 64px;
-	box-shadow: 0px 0px 8px rgba(0,0,0,0.33);
+	box-shadow: 0px 2px 8px rgba(0,0,0,0.33);
 }
 .playing-info {
 	line-height: calc(66px / 3);
@@ -397,6 +397,7 @@ h1 {
 .info-album-art img {
 	width: 64px;
 	height: 64px;
+	box-shadow: 0px 2px 8px rgba(0,0,0,0.33);
 }
 .info-buttons {
 	width: 332px;

@@ -51,9 +51,9 @@ function addStrimmerRow(index) {
 	if(index > strimmer_data.RETURN_DATA.length) {
 		return;
 	}
-	row = strimmer_data.RETURN_DATA[index];
+	var row = strimmer_data.RETURN_DATA[index];
 
-	var joined_str = "<tr>";
+	var joined_str = "<tr class=\"song_row\">";
 
 	var position = index + 1;
 
@@ -67,6 +67,7 @@ function addStrimmerRow(index) {
 	joined_str += "</tr>";
 	$('.main-table tr:last').after(joined_str);
 	$('.main-table tr:last').attr("trackid",row.STRIMMER_ID);
+	$('.main-table tr:last').attr("list_pos",position);
 
 	last_track = index+1;
 }
@@ -85,4 +86,41 @@ $(".main-area").scroll(function() {
 			loading = 0;
 		}
 	}
+});
+
+/* 				<div class="info-stats" id="toggleInfo">
+					<div class="info-album-art">
+						<img src="images/test/flower.jpg"/>
+					</div>
+					<span class="title">Sample Song</span><br/>
+					<span class="artist">Someone</span><br/>
+					<span class="info">Added by TheBlackParrot from SoundCloud</span>
+					<i class="fa fa-caret-down"></i>&nbsp;
+				</div>
+				<div class="info-buttons">
+					<i class="fa fa-heart"></i>&nbsp;
+					<i class="fa fa-plus-circle"></i>&nbsp;
+					<i class="fa fa-pencil"></i>&nbsp;
+					<i class="fa fa-trash"></i>&nbsp;
+				</div>
+*/
+
+$(".main-table").on("click", "tr", function(e){
+	var trackid = $(this).attr("trackid");
+	var row = strimmer_data.RETURN_DATA[$(this).attr("list_pos")-1];
+
+	$(".info-area").attr("loaded_track",trackid);
+
+	$(".info-album-art img").attr("src",row.CACHED_ART);
+	$(".bg_img_info img").attr("src",row.CACHED_ART);
+
+	$(".info-stats .title").text(row.TITLE);
+	$(".info-stats .artist").text(row.ARTIST);
+	$(".info-stats .info").text("Added by " + row.ADDED_BY + " from " + row.SERVICE);
+
+	if($(".info-area").attr("visible") != 1) {
+		toggleInfoPanel();
+	}
+
+	e.preventDefault();
 });
