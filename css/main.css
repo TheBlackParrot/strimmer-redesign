@@ -236,6 +236,9 @@ h1 {
 	width: 500px;
 	float: right;
 	display: inline-block;
+	background: linear-gradient(to right, transparent, #000);
+	background: -webkit-linear-gradient(to right, transparent, #000);
+	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
 }
 .playing-album-art {
 	width: 64px;
@@ -250,7 +253,7 @@ h1 {
 	box-shadow: 0px 0px 8px rgba(0,0,0,0.33);
 }
 .playing-info {
-	line-height: calc(64px / 3);
+	line-height: calc(66px / 3);
 }
 .playing-info .title {
 	font-weight: 700;
@@ -272,17 +275,18 @@ h1 {
 	font-weight: 300;
 	text-align: center;
 	width: 50px;
+	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
 }
-.elapsed-time, .total-time {
+.elapsed-time {
 	float: left;
 }
 .total-time {
-	position: relative;
-	top: -8px;
+	float: right;
 }
 .progress-bar-wrapper {
 	position: relative;
 	top: 20px;
+	display: inline-block;
 }
 .progress-bar-filled, .progress-bar-unfilled {
 	height: 8px;
@@ -298,6 +302,8 @@ h1 {
 	top: 8px;
 	left: 8px;
 	z-index: 6;
+	transition: 1s;
+	transition-timing-function: linear;
 }
 .progress-bar-unfilled {
 	height: 2px;
