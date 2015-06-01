@@ -8,7 +8,7 @@
 </tr>
 <script src="js/list-view.js"></script>
 <script>
-	getStrimmerJSON(0,0,"added","desc",function(){
+	getStrimmerListJSON(0,0,"added","desc",function(){
 		for(i=0;i<50;i++) {
 			addStrimmerRow(i);
 		}
