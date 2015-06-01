@@ -15,9 +15,13 @@
 					console.log("Info area is marked as visible.");
 					$(".info-area").removeClass("main-frame_slideUp");
 					$(".info-area").addClass("main-frame_slideDown");
+					$(".bg_img_info").removeClass("main-frame_slideUp");
+					$(".bg_img_info").addClass("main-frame_slideDown");
 					$(".info-area").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
 						$(".info-area").hide();
 						$(".info-area").attr("visible","0");
+						$(".bg_img_info").hide();
+						$(".bg_img_info").attr("visible","0");
 					});
 
 				} else {
@@ -26,6 +30,10 @@
 					$(".info-area").attr("visible","1");
 					$(".info-area").removeClass("main-frame_slideDown");
 					$(".info-area").addClass("main-frame_slideUp");
+					$(".bg_img_info").show();
+					$(".bg_img_info").attr("visible","1");
+					$(".bg_img_info").removeClass("main-frame_slideDown");
+					$(".bg_img_info").addClass("main-frame_slideUp");
 				}
 			});
 
@@ -55,9 +63,10 @@
 
 <body>
 	<div class="wrapper">
+		<div class="bg_img_info"><img src="images/test/flower.jpg"/></div>
 		<div class="info-area" visible="0">
-			<div class="content-wrapper">
-				<p id="toggleMain">Track info and buttons will be down here now</p>
+			<div class="info-wrapper">
+				
 			</div>
 		</div>
 		<div class="main-area">
