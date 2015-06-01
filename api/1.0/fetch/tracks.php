@@ -1,5 +1,7 @@
 <?php
-	header("Content-Type:text/plain");
+	header("Content-Type: text/plain");
+	// CORS requests
+	header("Access-Control-Allow-Origin: *");
 
 	$root = dirname(dirname(dirname(dirname(__FILE__))));
 
@@ -56,9 +58,9 @@
 	$fixed_offset = 0;
 	if(isset($_GET['offset'])) {
 		$offset = htmlspecialchars($_GET['offset']);
-		if($offset > $tracks) {
+		if($offset >= $tracks) {
 			http_response_code(400);
-			die();
+			die(json_encode("400: Bad request"));
 		}
 		$fixed_offset = $offset;
 	}
@@ -74,6 +76,7 @@
 		$cur_array['ARTIST_PERMALINK'] = $tmp['RETURN_ARG4'];
 		$cur_array['API_STREAM'] = $tmp['RETURN_ARG5'];
 		$cur_array['TRACK_PERMALINK'] = $tmp['RETURN_ARG6'];
+		$cur_array['CACHED_ART'] = $prog_internal_url . "/cache/" . $tmp['TRACKID'] . ".jpg";
 		$cur_array['ART_PERMALINK'] = $tmp['RETURN_ARG7'];
 		$cur_array['ADDED_BY'] = $tmp['ADDED_BY'];
 		$cur_array['ADDED_ON'] = $tmp['ADDED_ON'];
