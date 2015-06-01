@@ -141,3 +141,137 @@
 		-webkit-transform: rotate(0deg);
 	}
 }
+
+
+.dialog-close {
+	animation-name: dialog-close_KF;
+	animation-duration: .5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: dialog-close_KF;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@keyframes dialog-close_KF {
+	to {
+		transform: scale(0.75) translate(-66%, -66%);
+		opacity: 0;
+	}
+}
+@-webkit-keyframes dialog-close_KF {
+	to {
+		-webkit-transform: scale(0.75) translate(-66%, -66%);
+		opacity: 0;
+	}
+}
+
+.dialog-open {
+	animation-name: dialog-open_KF;
+	animation-duration: .5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: dialog-open_KF;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@keyframes dialog-open_KF {
+	from {
+		transform: scale(0.75) translate(-66%, -66%);
+		opacity: 0;
+	}
+	to {
+		transform: translate(-50%, -50%);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes dialog-open_KF {
+	from {
+		-webkit-transform: scale(0.75) translate(-66%, -66%);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: translate(-50%, -50%);
+		opacity: 1;
+	}
+}
+
+
+.standard-fadeout {
+	animation-name: standard-fadeout_KF;
+	animation-duration: .5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: standard-fadeout_KF;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes standard-fadeout_KF {
+	to {
+		opacity: 0;
+	}
+}
+@-webkit-keyframes standard-fadeout_KF {
+	to {
+		opacity: 0;
+	}
+}
+
+.standard-fadein {
+	animation-name: standard-fadein_KF;
+	animation-duration: .5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: standard-fadein_KF;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes standard-fadein_KF {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes standard-fadein_KF {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+
+.dialog-wrapper-fadein {
+	animation-name: dialog-wrapper-fadein_KF;
+	animation-duration: .5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: dialog-wrapper-fadein_KF;
+	-webkit-animation-duration: .5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes dialog-wrapper-fadein_KF {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 0.33;
+	}
+}
+@-webkit-keyframes dialog-wrapper-fadein_KF {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 0.33;
+	}
+}

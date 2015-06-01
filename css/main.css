@@ -236,6 +236,8 @@ h1 {
 .user-caret {
 	padding-right: 16px;
 	float: right;
+	transform-origin: center center;
+	-webkit-transform-origin: center center;
 }
 .user-header:hover {
 	transition: .1s;

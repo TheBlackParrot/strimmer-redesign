@@ -6,59 +6,8 @@
 	<link rel="stylesheet" href="css/animations.css"/>
 	<link rel="stylesheet" href="css/font-awesome.css"/>
 	<script src="js/jquery.js"></script>
-	<script>
-		$(document).ready(function(){
-			console.log("Ready.");
-			$("#toggleInfo, #toggleMain").on("click",function(){
-				console.log("Info toggle clicked.");
-				if($(".info-area").attr("visible") == 1) {
-					console.log("Info area is marked as visible.");
-					$(".info-area").removeClass("main-frame_slideUp");
-					$(".info-area").addClass("main-frame_slideDown");
-					$(".bg_img_info").removeClass("main-frame_slideUp");
-					$(".bg_img_info").addClass("main-frame_slideDown");
-					$(".info-area").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
-						$(".info-area").hide();
-						$(".info-area").attr("visible","0");
-						$(".bg_img_info").hide();
-						$(".bg_img_info").attr("visible","0");
-					});
-
-				} else {
-					console.log("Info area is marked as invisible.");
-					$(".info-area").show();
-					$(".info-area").attr("visible","1");
-					$(".info-area").removeClass("main-frame_slideDown");
-					$(".info-area").addClass("main-frame_slideUp");
-					$(".bg_img_info").show();
-					$(".bg_img_info").attr("visible","1");
-					$(".bg_img_info").removeClass("main-frame_slideDown");
-					$(".bg_img_info").addClass("main-frame_slideUp");
-				}
-			});
-
-			$(".user-header, #toggleUser").on("click",function(){
-				console.log("Account info toggle clicked.");
-				if($(".user-wrapper").attr("visible") == 1) {
-					console.log("User account area is marked as visible.");
-					$(".user-wrapper").removeClass("user_slideUp");
-					$(".user-wrapper").addClass("user_slideDown");
-					$(".user-caret").removeClass("rotatef");
-					$(".user-caret").addClass("rotateb");
-					$(".user-wrapper").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
-						$(".user-wrapper").attr("visible","0");
-					});
-				} else {
-					console.log("User account area is marked as invisible.");
-					$(".user-wrapper").attr("visible","1");
-					$(".user-wrapper").removeClass("user_slideDown");
-					$(".user-wrapper").addClass("user_slideUp");
-					$(".user-caret").removeClass("rotateb");
-					$(".user-caret").addClass("rotatef");
-				}
-			});
-		});
-	</script>
+	<script src="js/ui-interaction.js"></script>
+	<script src="js/dialog.js"></script>
 </head>
 
 <body>
@@ -182,6 +131,22 @@
 						<i class="fa fa-exclamation-triangle fa-fw"></i>&nbsp; DMCA Information
 					</span>
 				</div>
+				<hr/>
+				<div class="menu-item" id="openDialog">
+					<span class="menu-item-wrapper">
+						<i class="fa fa-cog fa-fw"></i>&nbsp; Open a dialog
+					</span>
+				</div>
+				<div class="menu-item" id="toggleInfo">
+					<span class="menu-item-wrapper">
+						<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle the info panel
+					</span>
+				</div>
+				<div class="menu-item" id="toggleUser">
+					<span class="menu-item-wrapper">
+						<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle the account panel
+					</span>
+				</div>
 			</div>
 			<div class="user-wrapper" visible="0">
 				<div class="user-header">
@@ -225,16 +190,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="dialog-wrapper">
-			<div class="dialog">
-				<span class="header">Test dialog</span>
-				This is a test.
-				<div class="dialog-buttons">
-					<div class="button">OK</div>
-					<div class="button">Cancel</div>
-				</div>
-			</div>
-		</div>
+		<div class="dialog-load-spot"></div>
 	</div>
 </body>
 
