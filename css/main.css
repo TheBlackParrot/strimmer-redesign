@@ -6,6 +6,7 @@ body {
 	font-size: 10pt;
 	line-height: 16pt;
 	color: #222;
+	font-weight: 400;
 }
 h1 {
 	font-size: 20pt;
@@ -96,6 +97,7 @@ h1 {
 	padding-left: 16px;
 	padding-right: 16px;
 	padding-bottom: 112px;
+	background: linear-gradient(rgba(255,255,255,0.5) 10%,transparent 20%);
 }
 
 .main-table {
@@ -128,28 +130,33 @@ h1 {
 	text-align: right;
 	width: 1%;
 }
-.main-table tr td:nth-child(2), .main-table tr td:nth-child(3) {
-	width: 22px;
-	min-width: 22px;
-	max-width: 22px;
+.main-table tr:nth-child(n+2) td:nth-child(1) {
+	color: #aaa;
+	font-weight: 700;
 }
-.main-table tr td:nth-child(4) {
+.main-table tr td:nth-child(2) {
+	width: 46px;
+	min-width: 46px;
+	max-width: 46px;
+	padding: 0;
+}
+.main-table tr td:nth-child(3) {
 	width: 40%;
 }
-.main-table tr td:nth-child(5) {
+.main-table tr td:nth-child(4) {
 	width: 25%;
 }
-.main-table tr td:nth-child(6) {
+.main-table tr td:nth-child(5) {
 	width: 15%;
 }
-.main-table tr td:nth-child(7), .main-table tr td:nth-child(7) {
+.main-table tr td:nth-child(6), .main-table tr td:nth-child(6) {
 	width: 250px;
 	min-width: 250px;
 	max-width: 250px;
 }
 .main-table img {
-	width: 26px;
-	height: 26px;
+	width: 46px;
+	height: 46px;
 }
 
 .menu-wrapper {
