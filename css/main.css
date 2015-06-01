@@ -348,6 +348,71 @@ h1 {
 }
 
 
-.info-wrapper {
+.info-stats {
+	width: calc(100% - 300px - 64px);
+	float: left;
 	padding: 16px;
+	line-height: calc(66px / 3);
+	background: linear-gradient(to right, transparent, #000);
+	background: -webkit-linear-gradient(to right, transparent, #000);
+	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+.info-stats .title {
+	font-weight: 700;
+	font-size: 12pt;
+}
+.info-stats .info {
+	color: #aaa;
+	font-size: 8pt;
+}
+.info-stats .fa-caret-down {
+	float: right;
+	line-height: 0px;
+	font-size: 24pt;
+	padding-right: 16px;
+	position: relative;
+	top: -10px;
+	margin: 0;
+}
+.info-album-art {
+	width: 64px;
+	height: 64px;
+	float: left;
+	margin-right: 10px;
+}
+.info-album-art img {
+	width: 64px;
+	height: 64px;
+}
+.info-buttons {
+	width: 332px;
+	height: 100%;
+	background-color: #333;
+	float: right;
+	line-height: 96px;
+	text-align: center;
+}
+.info-buttons .fa {
+	font-size: 24pt;
+	color: #fff;
+	width: 20%;
+	position: relative;
+	top: 8px;
+	left: 4px;
+	transition: .1s;
+}
+.info-buttons .fa-heart:hover {
+	color: #E91E63;
+}
+.info-buttons .fa-plus-circle:hover {
+	color: #4CAF50;
+}
+.info-buttons .fa-pencil {
+	color: #777;
+}
+/* .info-buttons .fa-pencil:hover {
+	color: #FFC107;
+} */
+.info-buttons .fa-trash:hover {
+	color: #F44336;
 }

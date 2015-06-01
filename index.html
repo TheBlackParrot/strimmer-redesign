@@ -37,7 +37,7 @@
 				}
 			});
 
-			$(".user-wrapper, #toggleUser").on("click",function(){
+			$(".user-header, #toggleUser").on("click",function(){
 				console.log("Account info toggle clicked.");
 				if($(".user-wrapper").attr("visible") == 1) {
 					console.log("User account area is marked as visible.");
@@ -66,7 +66,21 @@
 		<div class="bg_img_info"><img src="images/test/flower.jpg"/></div>
 		<div class="info-area" visible="0">
 			<div class="info-wrapper">
-				
+				<div class="info-stats" id="toggleInfo">
+					<div class="info-album-art">
+						<img src="images/test/flower.jpg"/>
+					</div>
+					<span class="title">Sample Song</span><br/>
+					<span class="artist">Someone</span><br/>
+					<span class="info">Added by TheBlackParrot from SoundCloud</span>
+					<i class="fa fa-caret-down"></i>&nbsp;
+				</div>
+				<div class="info-buttons">
+					<i class="fa fa-heart"></i>&nbsp;
+					<i class="fa fa-plus-circle"></i>&nbsp;
+					<i class="fa fa-pencil"></i>&nbsp;
+					<i class="fa fa-trash"></i>&nbsp;
+				</div>
 			</div>
 		</div>
 		<div class="main-area">
@@ -135,7 +149,12 @@
 				<div class="user-menu-wrapper">
 					<div class="user-menu-item">
 						<span class="user-menu-item-wrapper">
-							<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle user account area
+							<i class="fa fa-cog fa-fw"></i>&nbsp; Settings
+						</span>
+					</div>
+					<div class="user-menu-item">
+						<span class="user-menu-item-wrapper">
+							<i class="fa fa-sign-out fa-fw"></i>&nbsp; Logout
 						</span>
 					</div>
 				</div>
