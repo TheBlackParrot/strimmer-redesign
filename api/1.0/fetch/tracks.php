@@ -14,7 +14,7 @@
 
 	if(isset($_GET['amount'])) {
 		$amount = htmlspecialchars($_GET['amount']);
-		if($amount < 0) {
+		if($amount <= 0) {
 			$amount = $tracks;
 		}
 		if($amount > $tracks) {

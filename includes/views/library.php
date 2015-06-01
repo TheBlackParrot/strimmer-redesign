@@ -1,0 +1,16 @@
+<tr>
+	<td>#</td>
+	<td></td>
+	<td><i class="fa fa-music"></i>&nbsp; Title</td>
+	<td><i class="fa fa-microphone"></i>&nbsp; Artist</td>
+	<td><i class="fa fa-user"></i>&nbsp; Added by</td>
+	<td><i class="fa fa-clock-o"></i>&nbsp; Added on</td>
+</tr>
+<script src="js/list-view.js"></script>
+<script>
+	getStrimmerJSON(0,0,"added","desc",function(){
+		for(i=0;i<50;i++) {
+			addStrimmerRow(i);
+		}
+	});
+</script>

@@ -8,7 +8,6 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/ui-interaction.js"></script>
 	<script src="js/dialog.js"></script>
-	<script src="js/list-view.js"></script>
 </head>
 
 <body>
@@ -48,31 +47,8 @@
 							<td><i class="fa fa-user"></i>&nbsp; Added by</td>
 							<td><i class="fa fa-clock-o"></i>&nbsp; Added on</td>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/test/flower.jpg"/></td>
-							<td>Sample Song</td>
-							<td>Someone</td>
-							<td>TheBlackParrot</td>
-							<td>May 31st, 2015, 02:28 CDT</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td><img src="images/test/flower.jpg"/></td>
-							<td>Another Sample Song</td>
-							<td>Someone Else</td>
-							<td>TheBlackParrot</td>
-							<td>September 30th, 2015, 17:14 CDT</td>
-						</tr>
-						<tr>
-							<td>1,187</td>
-							<td><img src="images/test/flower.jpg"/></td>
-							<td>Some Other Sample Song</td>
-							<td>Literally Anybody</td>
-							<td>TheBlackParrot</td>
-							<td>November 11th, 2015, 09:41 CST</td>
-						</tr>
 					</table>
+					<div class="inf-scroll-load"></div>
 				</div>
 			</div>
 		</div>
@@ -95,7 +71,7 @@
 					</span>
 				</div>
 				<hr/>
-				<div class="menu-item">
+				<div class="menu-item" page="library">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-music fa-fw"></i>&nbsp; Music Library
 					</span>

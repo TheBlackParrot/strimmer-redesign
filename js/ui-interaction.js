@@ -48,4 +48,11 @@ $(document).ready(function(){
 			$(".user-caret").addClass("rotatef");
 		}
 	});
+
+	// menu items
+	$(".menu-item").on("click",function(){
+		var element = $(".main-table");
+		element.empty();
+		element.load("includes/views/" + $(this).attr("page") + ".php");
+	});
 });

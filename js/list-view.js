@@ -1,7 +1,9 @@
 var strimmer_host = 'http://strimmer2.theblackparrot.us/api/1.0/';
+var loading;
+var last_track;
 
 function getFullMonth(month) {
-	switch(month) {
+	switch(month+1) {
 		case 1: return "January";
 		case 2: return "February";
 		case 3: return "March";
@@ -17,7 +19,9 @@ function getFullMonth(month) {
 	}
 }
 
-function getStrimmerJSON(offset,amount,sort,order) {
+// use this function for loading all list views
+
+function getStrimmerJSON(offset,amount,sort,order,callback) {
 	var url = strimmer_host + 'fetch/tracks.php?offset=' + encodeURI(offset) + '&amount=' + encodeURI(amount) + '&sort=' + encodeURI(sort) + '&order=' + encodeURI(order);
 	console.log(url);
 
@@ -30,29 +34,53 @@ function getStrimmerJSON(offset,amount,sort,order) {
 			withCredentials: false
 		},
 		success: function(data) {
-			var strimmer_data = data;
-			//console.log(strimmer_data.RETURN_DATA[0].TITLE);
-			for (var i = strimmer_data.RETURN_DATA.length - 1;i>=0;i--) {
-				//console.log(strimmer_data.RETURN_DATA[i]);
-				var joined_str = "<tr>";
-
-				var position = (strimmer_data.RETURN_DATA.length - i);
-				var date = new Date(strimmer_data.RETURN_DATA[i].ADDED_ON*1000);
-
-				joined_str += "<td>" + position + "</td>";
-				joined_str += "<td><img src=\"" + strimmer_data.RETURN_DATA[i].CACHED_ART + "\"/></td>";
-				joined_str += "<td>" + strimmer_data.RETURN_DATA[i].TITLE + "</td>";
-				joined_str += "<td>" + strimmer_data.RETURN_DATA[i].ARTIST + "</td>";
-				joined_str += "<td>" + strimmer_data.RETURN_DATA[i].ADDED_BY + "</td>";
-				joined_str += "<td>" + getFullMonth(date.getMonth()) + " " + date.getDate() + ", " + date.getFullYear() + ", " + date.getHours() + ":" + date.getMinutes() + "</td>";
-
-				joined_str += "</tr>";
-				$('.main-table tr:last').after(joined_str);
-			};
+			strimmer_data = data;
+			if(typeof callback === "function") {
+				callback();
+			}
 		},
 		error: function() {
 			console.log("error");
 		}
 	});
 }
-getStrimmerJSON(0,21,"added","asc");
+
+function addStrimmerRow(index) {
+	if(index > strimmer_data.RETURN_DATA.length) {
+		return;
+	}
+	row = strimmer_data.RETURN_DATA[index];
+
+	var joined_str = "<tr>";
+
+	var date = new Date(row.ADDED_ON*1000);
+	var position = index + 1;
+
+	joined_str += "<td>" + position + "</td>";
+	joined_str += "<td><img src=\"" + row.CACHED_ART + "\"/></td>";
+	joined_str += "<td>" + row.TITLE + "</td>";
+	joined_str += "<td>" + row.ARTIST + "</td>";
+	joined_str += "<td>" + row.ADDED_BY + "</td>";
+	joined_str += "<td>" + getFullMonth(date.getMonth()) + " " + date.getDate() + ", " + date.getFullYear() + ", " + date.getHours() + ":" + date.getMinutes() + "</td>";
+
+	joined_str += "</tr>";
+	$('.main-table tr:last').after(joined_str);
+
+	last_track = index+1;
+}
+
+$(".main-area").scroll(function() {
+	var diff = $(".content-wrapper").height() - $(".main-area").height();
+	var diff2 = $(".main-area").scrollTop() - diff;
+	
+	if($(".main-area").scrollTop() - diff >= 112) {
+		if(!loading) {
+			loading = 1;
+			var lastload = 50+last_track;
+			for(i=last_track;i<lastload;i++) {
+				addStrimmerRow(i);
+			}
+			loading = 0;
+		}
+	}
+});
