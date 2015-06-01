@@ -187,6 +187,8 @@ h1 {
 
 .menu-wrapper {
 	width: 100%;
+	height: calc(100% - 96px - 64px);
+	overflow-y: auto;
 }
 .menu-item-wrapper {
 	margin-left: 16px;
@@ -205,6 +207,16 @@ h1 {
 	transition: .05s;
 	background-color: #3F51B5;
 	color: #fff;
+}
+.menu-wrapper hr {
+	padding: 0;
+	margin: 0;
+	margin-left: 32px;
+	margin-right: 32px;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	border: 0;
+	border-bottom: 1px solid #ddd;
 }
 
 .user-wrapper {
