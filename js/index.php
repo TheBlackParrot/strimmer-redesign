@@ -9,28 +9,21 @@
 	<script src="js/ui-interaction.js"></script>
 	<script src="js/dialog.js"></script>
 	<script src="js/now-playing.js"></script>
-	<script src="js/library.js"></script>
-	<script>
-		getStrimmerLibrary(function(){
-			$(".main-table").load("includes/views/library.php");
-			updateNowPlaying();
-		})
-	</script>
 </head>
 
 <body>
 	<div class="wrapper">
-		<div class="bg_img_info"><img src="images/bg-placeholder.jpg"/></div>
+		<div class="bg_img_info"><img src="images/test/flower.jpg"/></div>
 		<div class="info-area" visible="0">
 			<div class="info-wrapper">
 				<div class="info-stats" id="toggleInfo">
 					<div class="info-content">
 						<div class="info-album-art">
-							<img src="images/bg-placeholder.jpg"/>
+							<img src="images/test/flower.jpg"/>
 						</div>
-						<span class="title"></span><br/>
-						<span class="artist"></span><br/>
-						<span class="info"></span>
+						<span class="title">Sample Song</span><br/>
+						<span class="artist">Someone</span><br/>
+						<span class="info">Added by TheBlackParrot from SoundCloud</span>
 					</div>
 					<i class="fa fa-caret-down"></i>&nbsp;
 				</div>
@@ -160,24 +153,24 @@
 				</div>
 			</div>
 		</div>
-		<div class="bg_img"><img src="images/bg-placeholder.jpg"/></div>
+		<div class="bg_img"><img src="images/test/flower.jpg"/></div>
 		<div class="playing-drawer">
 			<div class="playing-stats">
-				<div class="elapsed-time">-:--</div>
+				<div class="elapsed-time">0:34</div>
 				<div class="progress-bar-wrapper" style="width: calc(100% - 116px);">
-					<div class="progress-bar-filled"></div>
+					<div class="progress-bar-filled" style="width: calc(100% - 86%);"></div>
 					<div class="progress-bar-unfilled" style="width: calc(100%);"></div>
 				</div>
-				<div class="total-time">-:--</div>
+				<div class="total-time">3:51</div>
 			</div>
 			<div class="playing-wrapper">
 				<div class="playing-album-art">
-					<img src="images/bg-placeholder.jpg"/>
+					<img src="images/test/flower.jpg"/>
 				</div>
 				<div class="playing-info">
-					<span class="title"></span><br/>
-					<span class="artist"></span><br/>
-					<span class="info"></span>
+					<span class="title">Sample Song</span><br/>
+					<span class="artist">Someone</span><br/>
+					<span class="info">Added by TheBlackParrot from SoundCloud</span>
 				</div>
 			</div>
 		</div>

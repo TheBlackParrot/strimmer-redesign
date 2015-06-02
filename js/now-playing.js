@@ -69,20 +69,21 @@ function getStrimmerProgress(type,callback) {
 			</div>
 		</div>
 */
-setInterval(function(){
+
+function updateNowPlaying() {
 	getStrimmerNowPlaying("low","none", function(current_result){
-		if(!strimmer_data) {
-			console.log("strimmer_data not found, doing nothing.");
+		if(!library_data) {
+			console.log("library_data not found, doing nothing.");
 		} else {
 			if(old_result != current_result) {
 				old_result = current_result;
-				strimmer_data.RETURN_DATA.map(function (search) {
+				library_data.RETURN_DATA.map(function (search) {
 					if(search.STRIMMER_ID == current_result) {
-						index = strimmer_data.RETURN_DATA.indexOf(search);
+						index = library_data.RETURN_DATA.indexOf(search);
 						console.log(index);
 					}
 				});
-				var row = strimmer_data.RETURN_DATA[index];
+				var row = library_data.RETURN_DATA[index];
 
 				$(".bg_img img").removeClass("standard-fadein");
 				$(".bg_img img").addClass("standard-fadeout");
@@ -106,6 +107,9 @@ setInterval(function(){
 			}
 		}
 	});
+}
+setInterval(function(){
+	updateNowPlaying();
 }, 5000);
 
 /*

@@ -8,9 +8,9 @@
 </tr>
 <script src="js/list-view.js"></script>
 <script>
-	getStrimmerListJSON(0,0,"added","asc","queue",function(){
-		for(i=0;i<strimmer_data.RETURN_DATA.length;i++) {
-			addStrimmerRow(i);
+	getStrimmerListJSON(0,0,"added","asc","queue",function(data){
+		for(i=0;i<50;i++) {
+			addStrimmerRow(data.RETURN_DATA[i]);
 		}
 	});
 </script>

@@ -3,6 +3,7 @@ var loading;
 var last_track;
 var last_row;
 var last_playing_row;
+var position = 0;
 
 // http://stackoverflow.com/questions/3187790/convert-unix-time-to-mm-dd-yy-hhmm-24-hour-in-javascript/3189792#3189792
 String.prototype.padLeft = function (length, character) { 
@@ -22,44 +23,49 @@ function testLoad() {
 
 // use this function for loading all list views
 function getStrimmerListJSON(offset,amount,sort,order,where,callback) {
+	// override to just use library_data, since it's there already
 	$(".main-area").append("<div class=\"table-loader-wrapper\"><i class=\"fa fa-circle-o-notch fa-spin table-loader\">&nbsp;</i></div>");
-	var url = strimmer_host + 'fetch/tracks.php?offset=' + encodeURI(offset) + '&amount=' + encodeURI(amount) + '&sort=' + encodeURI(sort) + '&order=' + encodeURI(order) + '&where=' + encodeURI(where);
-	//console.log(url);
-
-	$.ajax({
-		type: 'GET',
-		url: url,
-		contentType: 'text/plain',
-		dataType: 'json',
-		xhrFields: {
-			withCredentials: false
-		},
-		success: function(data) {
-			strimmer_data = data;
-			if(typeof callback === "function") {
-				callback();
-			}
-			$(".table-loader-wrapper").remove();
-		},
-		error: function() {
-			console.log("error");
-			$(".table-loader-wrapper").remove();
+	if(where == "library") {
+		strimmer_data = library_data;
+		if(typeof callback === "function") {
+			callback(library_data);
 		}
-	});
+		$(".table-loader-wrapper").remove();
+	} else {
+		var url = strimmer_host + 'fetch/tracks.php?offset=' + encodeURI(offset) + '&amount=' + encodeURI(amount) + '&sort=' + encodeURI(sort) + '&order=' + encodeURI(order) + '&where=' + encodeURI(where);
+		//console.log(url);
+
+		$.ajax({
+			type: 'GET',
+			url: url,
+			contentType: 'text/plain',
+			dataType: 'json',
+			xhrFields: {
+				withCredentials: false
+			},
+			success: function(data) {
+				strimmer_data = data;
+				if(typeof callback === "function") {
+					callback(data);
+				}
+				$(".table-loader-wrapper").remove();
+			},
+			error: function() {
+				console.log("error");
+				$(".table-loader-wrapper").remove();
+			}
+		});
+	}
 }
 
-function addStrimmerRow(index) {
-	if(index > strimmer_data.RETURN_DATA.length) {
-		return;
-	}
-	var row = strimmer_data.RETURN_DATA[index];
-	if(!strimmer_data.RETURN_DATA[index]) {
+function addStrimmerRow(row) {
+	if(!row) {
 		return;
 	}
 
 	var joined_str = "<tr class=\"song_row\">";
 
-	var position = index + 1;
+	position += 1;
 
 	joined_str += "<td>" + position + "</td>";
 	joined_str += "<td><img src=\"" + row.CACHED_ART + "\"/></td>";
@@ -73,7 +79,7 @@ function addStrimmerRow(index) {
 	$('.main-table tr:last').attr("trackid",row.STRIMMER_ID);
 	$('.main-table tr:last').attr("list_pos",position);
 
-	last_track = index+1;
+	last_track = position+1;
 }
 
 $(".main-area").scroll(function() {
@@ -83,9 +89,9 @@ $(".main-area").scroll(function() {
 	if($(".main-area").scrollTop() - diff >= 112) {
 		if(!loading) {
 			loading = 1;
-			var lastload = 50+last_track;
-			for(i=last_track;i<lastload;i++) {
-				addStrimmerRow(i);
+			var lastload = 50+position;
+			for(i=position;i<lastload;i++) {
+				addStrimmerRow(strimmer_data.RETURN_DATA[i]);
 			}
 			loading = 0;
 		}
@@ -97,7 +103,13 @@ $(".main-table").on("click", "tr", function(e){
 		return;
 	}
 	var trackid = $(this).attr("trackid");
-	var row = strimmer_data.RETURN_DATA[$(this).attr("list_pos")-1];
+	library_data.RETURN_DATA.map(function (search) {
+		if(search.STRIMMER_ID == trackid) {
+			index = library_data.RETURN_DATA.indexOf(search);
+			console.log(index);
+		}
+	});
+	var row = library_data.RETURN_DATA[index];
 
 	$(".bg_img_info img").removeClass("standard-fadein");
 	$(".bg_img_info img").addClass("standard-fadeout");
