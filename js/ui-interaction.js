@@ -62,4 +62,5 @@ $(document).ready(function(){
 			$(this).addClass("menu-item-toggled");
 		}
 	});
+	$(".main-table").load("includes/views/library.php");
 });

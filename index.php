@@ -8,6 +8,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/ui-interaction.js"></script>
 	<script src="js/dialog.js"></script>
+	<script src="js/now-playing.js"></script>
 </head>
 
 <body>
