@@ -82,9 +82,8 @@ function addStrimmerRow(row) {
 
 	last_track = position+1;
 
-	if(row.IS_PLAYING == 1) {
+	if(row.STRIMMER_ID == $(".playing-drawer").attr("loaded_track")) {
 		$('.main-table tr:last').addClass("song_row_playing");
-		last_playing_row = $('.main-table tr:last');
 	}
 }
 
