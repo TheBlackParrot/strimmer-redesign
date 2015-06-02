@@ -169,6 +169,10 @@ h1 {
 }
 .main-table tr td:nth-child(3) {
 	width: 40%;
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .main-table tr td:nth-child(4) {
 	width: 25%;
