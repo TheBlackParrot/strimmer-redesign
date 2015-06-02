@@ -79,7 +79,11 @@
 	}
 
 	if($fixed_where != "db_cache") {
-		$query = "SELECT * FROM $fixed_where ORDER BY $fixed_sort $fixed_order LIMIT $fixed_offset,$amount";
+		if($fixed_where == "play_queue") {
+			$query = "SELECT * FROM play_queue ORDER BY ISNULL(play_queue.ADDED_BY) ASC LIMIT $fixed_offset,$amount";
+		} else {
+			$query = "SELECT * FROM $fixed_where ORDER BY $fixed_sort $fixed_order LIMIT $fixed_offset,$amount";
+		}
 		$result = $mysqli->query($query);
 		while($selection = $result->fetch_assoc()) {
 			$query2 = 'SELECT * FROM db_cache WHERE TRACKID="' . $selection['TRACKID'] . '"';

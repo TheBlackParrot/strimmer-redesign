@@ -45,6 +45,7 @@ function getStrimmerListJSON(offset,amount,sort,order,where,callback) {
 			},
 			success: function(data) {
 				strimmer_data = data;
+				console.log(url);
 				if(typeof callback === "function") {
 					callback(data);
 				}

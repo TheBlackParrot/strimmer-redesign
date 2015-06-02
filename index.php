@@ -10,10 +10,21 @@
 	<script src="js/dialog.js"></script>
 	<script src="js/now-playing.js"></script>
 	<script src="js/library.js"></script>
+	<script src="js/color-thief.js"></script>
+	<!--
+	 * Color Thief v2.0
+	 * by Lokesh Dhakar - http://www.lokeshdhakar.com
+	 *
+	 * License
+	 * -------
+	 * Creative Commons Attribution 2.5 License:
+	 * http://creativecommons.org/licenses/by/2.5/
+	-->
 	<script>
 		getStrimmerLibrary(function(){
 			$(".main-table").load("includes/views/library.php");
 			updateNowPlaying();
+			var dominant_color = {r: 63, g: 81, b: 181};
 		})
 	</script>
 </head>

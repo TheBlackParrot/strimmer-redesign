@@ -1,5 +1,6 @@
 var strimmer_host = 'http://strimmer2.theblackparrot.us/api/1.0/';
 var old_result;
+var dominant_color = {r: 63, g: 81, b: 181};
 
 function getStrimmerNowPlaying(verbosity,type,callback) {
 	var url = strimmer_host + 'fetch/playing.php?verbosity=' + encodeURI(verbosity) + '&type=' + encodeURI(type);
@@ -85,6 +86,10 @@ function updateNowPlaying() {
 				});
 				var row = library_data.RETURN_DATA[index];
 
+				updateDominantColor(row.CACHED_ART);
+				
+				$(".progress-bar-filled").css("background-color","rgb(" + dominant_color.toString() + ")");
+
 				$(".bg_img img").removeClass("standard-fadein");
 				$(".bg_img img").addClass("standard-fadeout");
 				$(".bg_img img").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
@@ -108,6 +113,18 @@ function updateNowPlaying() {
 		}
 	});
 }
+
+function updateDominantColor(url) {
+	var img = new Image();
+	img.crossOrigin = "Anonymous";
+	img.src = url;
+	img.onload = function() {
+		var colorThief = new ColorThief();
+		dominant_color = colorThief.getColor(img);
+		$(".progress-bar-filled").css("background-color","rgb(" + dominant_color.toString() + ")");
+	}
+}
+
 setInterval(function(){
 	updateNowPlaying();
 }, 5000);
