@@ -109,6 +109,14 @@ function updateNowPlaying() {
 					$(".playing-info").addClass("info-stats-fadein");
 					$(".playing-drawer").attr("loaded_track",row.STRIMMER_ID);
 				});
+
+				$(".song_row").each(function(){
+					if($(this).attr("trackid") != row.STRIMMER_ID) {
+						$(this).removeClass("song_row_playing");
+					} else {
+						$(this).addClass("song_row_playing");
+					}
+				});
 			}
 		}
 	});

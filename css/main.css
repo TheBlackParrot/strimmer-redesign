@@ -365,6 +365,7 @@ h1 {
 	z-index: 6;
 	transition: 1s;
 	transition-timing-function: linear;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.33);
 }
 .progress-bar-unfilled {
 	height: 2px;

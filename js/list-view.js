@@ -81,6 +81,11 @@ function addStrimmerRow(row) {
 	$('.main-table tr:last').attr("list_pos",position);
 
 	last_track = position+1;
+
+	if(row.IS_PLAYING == 1) {
+		$('.main-table tr:last').addClass("song_row_playing");
+		last_playing_row = $('.main-table tr:last');
+	}
 }
 
 $(".main-area").scroll(function() {
