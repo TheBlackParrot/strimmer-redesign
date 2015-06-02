@@ -1,6 +1,7 @@
 <html>
 
 <head>
+	<link rel="stylesheet" href="css/fonts.css"/>
 	<link rel="stylesheet" href="css/reset.css"/>
 	<link rel="stylesheet" href="css/main.css"/>
 	<link rel="stylesheet" href="css/animations.css"/>
@@ -74,18 +75,18 @@
 		</div>
 		<div class="menu-drawer">
 			<div class="menu-wrapper">
-				<div class="menu-item">
+				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-play-circle fa-fw"></i>&nbsp; Listen
 					</span>
 				</div>
 				<hr/>
-				<div class="menu-item">
+				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-user fa-fw"></i>&nbsp; My Music
 					</span>
 				</div>
-				<div class="menu-item">
+				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-heart fa-fw"></i>&nbsp; Favorites
 					</span>
@@ -106,24 +107,24 @@
 						<i class="fa fa-history fa-fw"></i>&nbsp; Play History
 					</span>
 				</div>
-				<div class="menu-item">
+				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-download fa-fw"></i>&nbsp; Export Library
 					</span>
 				</div>
 				<hr/>
-				<div class="menu-item">
+				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-plus-circle fa-fw"></i>&nbsp; Add a Track
 					</span>
 				</div>
 				<hr/>
-				<div class="menu-item">
+				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-info-circle fa-fw"></i>&nbsp; About
 					</span>
 				</div>
-				<div class="menu-item">
+				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-exclamation-triangle fa-fw"></i>&nbsp; DMCA Information
 					</span>

@@ -1,4 +1,4 @@
-var strimmer_host = 'http://strimmer2.theblackparrot.us/api/1.0/';
+var strimmer_host = 'https://strimmer2.theblackparrot.us/api/1.0/';
 var old_result;
 var dominant_color = {r: 63, g: 81, b: 181};
 

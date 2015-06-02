@@ -5,6 +5,7 @@ function toggleInfoPanel() {
 		$(".info-area").addClass("main-frame_slideDown");
 		$(".bg_img_info").removeClass("main-frame_slideUp");
 		$(".bg_img_info").addClass("main-frame_slideDown");
+		$(".song_row_toggled").removeClass("song_row_toggled");
 		$(".info-area").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
 			$(".info-area").hide();
 			$(".info-area").attr("visible","0");

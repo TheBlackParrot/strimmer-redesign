@@ -1,4 +1,4 @@
-var strimmer_host = 'http://strimmer2.theblackparrot.us/api/1.0/';
+var strimmer_host = 'https://strimmer2.theblackparrot.us/api/1.0/';
 
 function getStrimmerLibrary(callback) {
 	var url = strimmer_host + 'fetch/tracks.php';
