@@ -1,4 +1,4 @@
-<tr>
+<tr class="table-header">
 	<td>#</td>
 	<td></td>
 	<td><i class="fa fa-music"></i>&nbsp; Title</td>

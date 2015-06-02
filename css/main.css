@@ -133,6 +133,7 @@ h1 {
 	padding: 10px;
 	vertical-align: middle;
 	line-height: 22px;
+	transition: .25s;
 }
 .main-table tr {
 	transition: .075s;
@@ -180,6 +181,11 @@ h1 {
 	min-width: 250px;
 	max-width: 250px;
 }
+.song_row_toggled td {
+	background-color: #3F51B5;
+	color: #fff;
+	transition: .25s;
+}
 .main-table img {
 	width: 46px;
 	height: 46px;
@@ -202,8 +208,9 @@ h1 {
 .menu-item:hover {
 	transition: .1s;
 	background-color: #ddd;
+	color: #222;
 }
-.menu-item:active {
+.menu-item:active, .menu-item-toggled {
 	transition: .05s;
 	background-color: #3F51B5;
 	color: #fff;

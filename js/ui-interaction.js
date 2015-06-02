@@ -58,6 +58,8 @@ $(document).ready(function(){
 			var element = $(".main-table");
 			element.empty();
 			element.load("includes/views/" + $(this).attr("page") + ".php");
+			$(this).parent().children().removeClass("menu-item-toggled");
+			$(this).addClass("menu-item-toggled");
 		}
 	});
 });

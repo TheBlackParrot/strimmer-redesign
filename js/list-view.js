@@ -1,6 +1,7 @@
 var strimmer_host = 'http://strimmer2.theblackparrot.us/api/1.0/';
 var loading;
 var last_track;
+var last_row;
 
 // http://stackoverflow.com/questions/3187790/convert-unix-time-to-mm-dd-yy-hhmm-24-hour-in-javascript/3189792#3189792
 String.prototype.padLeft = function (length, character) { 
@@ -106,6 +107,9 @@ $(".main-area").scroll(function() {
 */
 
 $(".main-table").on("click", "tr", function(e){
+	if($(this).hasClass("table-header")) {
+		return;
+	}
 	var trackid = $(this).attr("trackid");
 	var row = strimmer_data.RETURN_DATA[$(this).attr("list_pos")-1];
 
@@ -128,6 +132,12 @@ $(".main-table").on("click", "tr", function(e){
 		$(".info-content").addClass("info-stats-fadein");
 		$(".info-area").attr("loaded_track",trackid);
 	});
+
+	if(last_row) {
+		last_row.removeClass("song_row_toggled");
+	}
+	$(this).addClass("song_row_toggled");
+	last_row = $(this);
 
 	if($(".info-area").attr("visible") != 1) {
 		toggleInfoPanel();
