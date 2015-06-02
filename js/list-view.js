@@ -21,10 +21,9 @@ function testLoad() {
 }
 
 // use this function for loading all list views
-
-function getStrimmerListJSON(offset,amount,sort,order,callback) {
+function getStrimmerListJSON(offset,amount,sort,order,where,callback) {
 	$(".main-area").append("<div class=\"table-loader-wrapper\"><i class=\"fa fa-circle-o-notch fa-spin table-loader\">&nbsp;</i></div>");
-	var url = strimmer_host + 'fetch/tracks.php?offset=' + encodeURI(offset) + '&amount=' + encodeURI(amount) + '&sort=' + encodeURI(sort) + '&order=' + encodeURI(order);
+	var url = strimmer_host + 'fetch/tracks.php?offset=' + encodeURI(offset) + '&amount=' + encodeURI(amount) + '&sort=' + encodeURI(sort) + '&order=' + encodeURI(order) + '&where=' + encodeURI(where);
 	console.log(url);
 
 	$.ajax({
@@ -54,6 +53,9 @@ function addStrimmerRow(index) {
 		return;
 	}
 	var row = strimmer_data.RETURN_DATA[index];
+	if(!strimmer_data.RETURN_DATA[index]) {
+		return;
+	}
 
 	var joined_str = "<tr class=\"song_row\">";
 
@@ -89,23 +91,6 @@ $(".main-area").scroll(function() {
 		}
 	}
 });
-
-/* 				<div class="info-stats" id="toggleInfo">
-					<div class="info-album-art">
-						<img src="images/test/flower.jpg"/>
-					</div>
-					<span class="title">Sample Song</span><br/>
-					<span class="artist">Someone</span><br/>
-					<span class="info">Added by TheBlackParrot from SoundCloud</span>
-					<i class="fa fa-caret-down"></i>&nbsp;
-				</div>
-				<div class="info-buttons">
-					<i class="fa fa-heart"></i>&nbsp;
-					<i class="fa fa-plus-circle"></i>&nbsp;
-					<i class="fa fa-pencil"></i>&nbsp;
-					<i class="fa fa-trash"></i>&nbsp;
-				</div>
-*/
 
 $(".main-table").on("click", "tr", function(e){
 	if($(this).hasClass("table-header")) {

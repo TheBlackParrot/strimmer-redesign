@@ -77,12 +77,12 @@
 						<i class="fa fa-music fa-fw"></i>&nbsp; Music Library
 					</span>
 				</div>
-				<div class="menu-item">
+				<div class="menu-item" page="queue">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-list fa-fw"></i>&nbsp; Play Queue
 					</span>
 				</div>
-				<div class="menu-item">
+				<div class="menu-item" page="history">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-history fa-fw"></i>&nbsp; Play History
 					</span>
