@@ -3,7 +3,7 @@ var old_result;
 
 function getStrimmerNowPlaying(verbosity,type,callback) {
 	var url = strimmer_host + 'fetch/playing.php?verbosity=' + encodeURI(verbosity) + '&type=' + encodeURI(type);
-	console.log(url);
+	//console.log(url);
 
 	$.ajax({
 		type: 'GET',
@@ -20,7 +20,29 @@ function getStrimmerNowPlaying(verbosity,type,callback) {
 		},
 		error: function() {
 			console.log("error");
-			$(".table-loader-wrapper").remove();
+		}
+	});
+}
+
+function getStrimmerProgress(type,callback) {
+	var url = strimmer_host + 'fetch/progress.php?type=' + encodeURI(type);
+	//console.log(url);
+
+	$.ajax({
+		type: 'GET',
+		url: url,
+		contentType: 'text/plain',
+		dataType: 'text',
+		xhrFields: {
+			withCredentials: false
+		},
+		success: function(data) {
+			if(typeof callback === "function") {
+				callback(data);
+			}
+		},
+		error: function() {
+			console.log("error");
 		}
 	});
 }
@@ -84,4 +106,23 @@ setInterval(function(){
 			}
 		}
 	});
-}, 5000)
+}, 5000);
+
+/*
+			<div class="playing-stats">
+				<div class="elapsed-time">0:34</div>
+				<div class="progress-bar-wrapper" style="width: calc(100% - 116px);">
+					<div class="progress-bar-filled" style="width: calc(100% - 86%);"></div>
+					<div class="progress-bar-unfilled" style="width: calc(100%);"></div>
+				</div>
+				<div class="total-time">3:51</div>
+			</div>
+*/
+setInterval(function(){
+	getStrimmerProgress("all", function(data){
+		var lines = data.split("\r\n");
+		$(".elapsed-time").html(lines[1]);
+		$(".progress-bar-filled").css("width",lines[0] + "%");
+		$(".total-time").html(lines[2]);
+	});
+}, 1000);

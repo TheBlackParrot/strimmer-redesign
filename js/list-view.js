@@ -24,7 +24,7 @@ function testLoad() {
 function getStrimmerListJSON(offset,amount,sort,order,where,callback) {
 	$(".main-area").append("<div class=\"table-loader-wrapper\"><i class=\"fa fa-circle-o-notch fa-spin table-loader\">&nbsp;</i></div>");
 	var url = strimmer_host + 'fetch/tracks.php?offset=' + encodeURI(offset) + '&amount=' + encodeURI(amount) + '&sort=' + encodeURI(sort) + '&order=' + encodeURI(order) + '&where=' + encodeURI(where);
-	console.log(url);
+	//console.log(url);
 
 	$.ajax({
 		type: 'GET',
