@@ -266,6 +266,10 @@ h1 {
 .user-menu-wrapper {
 	padding: 0;
 }
+a .user-menu-item {
+	color: #fff;
+	text-decoration: none;
+}
 .user-menu-item {
 	padding-top: 16px;
 	padding-bottom: 16px;

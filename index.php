@@ -1,3 +1,7 @@
+<?php
+	include "includes/session.php";
+?>
+
 <html>
 
 <head>
@@ -80,17 +84,19 @@
 						<i class="fa fa-play-circle fa-fw"></i>&nbsp; Listen
 					</span>
 				</div>
-				<hr/>
-				<div class="menu-item menu-item-disabled">
-					<span class="menu-item-wrapper">
-						<i class="fa fa-user fa-fw"></i>&nbsp; My Music
-					</span>
-				</div>
-				<div class="menu-item menu-item-disabled">
-					<span class="menu-item-wrapper">
-						<i class="fa fa-heart fa-fw"></i>&nbsp; Favorites
-					</span>
-				</div>
+				<?php if($_SESSION['login'] == TRUE) { ?>
+					<hr/>
+					<div class="menu-item menu-item-disabled">
+						<span class="menu-item-wrapper">
+							<i class="fa fa-user fa-fw"></i>&nbsp; My Music
+						</span>
+					</div>
+					<div class="menu-item menu-item-disabled">
+						<span class="menu-item-wrapper">
+							<i class="fa fa-heart fa-fw"></i>&nbsp; Favorites
+						</span>
+					</div>
+				<?php } ?>
 				<hr/>
 				<div class="menu-item" page="library">
 					<span class="menu-item-wrapper">
@@ -112,12 +118,14 @@
 						<i class="fa fa-download fa-fw"></i>&nbsp; Export Library
 					</span>
 				</div>
-				<hr/>
-				<div class="menu-item menu-item-disabled">
-					<span class="menu-item-wrapper">
-						<i class="fa fa-plus-circle fa-fw"></i>&nbsp; Add a Track
-					</span>
-				</div>
+				<?php if($_SESSION['login'] == TRUE) { ?>
+					<hr/>
+					<div class="menu-item menu-item-disabled">
+						<span class="menu-item-wrapper">
+							<i class="fa fa-plus-circle fa-fw"></i>&nbsp; Add a Track
+						</span>
+					</div>
+				<?php } ?>
 				<hr/>
 				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
@@ -152,24 +160,30 @@
 				</div>
 			</div>
 			<div class="user-wrapper" visible="0">
-				<div class="user-header">
-					<img src="images/test/flower.jpg" class="user-av"/> TheBlackParrot
-					<span class="user-caret">
-						<i class="fa fa-caret-up"></i>&nbsp;
-					</span>
-				</div>
-				<div class="user-menu-wrapper">
-					<div class="user-menu-item">
-						<span class="user-menu-item-wrapper">
-							<i class="fa fa-cog fa-fw"></i>&nbsp; Settings
+				<?php if($_SESSION['login'] == TRUE) { ?>
+					<div class="user-header">
+						<img src="locdata/images/avatars/<?php echo $_SESSION['username']; ?>.jpg" class="user-av"/> <?php echo $_SESSION['username']; ?>
+						<span class="user-caret">
+							<i class="fa fa-caret-up"></i>&nbsp;
 						</span>
 					</div>
-					<div class="user-menu-item">
-						<span class="user-menu-item-wrapper">
-							<i class="fa fa-sign-out fa-fw"></i>&nbsp; Logout
-						</span>
+					<div class="user-menu-wrapper">
+						<div class="user-menu-item">
+							<span class="user-menu-item-wrapper">
+								<i class="fa fa-cog fa-fw"></i>&nbsp; Settings
+							</span>
+						</div>
+						<div class="user-menu-item" onClick="location.href='/includes/logout.php'">
+							<span class="user-menu-item-wrapper">
+								<i class="fa fa-sign-out fa-fw"></i>&nbsp; Logout</a>
+							</span>
+						</div>
 					</div>
-				</div>
+				<?php } else { ?>
+					<div class="user-header override" dialog="login.php">
+						Login
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div class="bg_img"><img src="images/bg-placeholder.jpg"/></div>

@@ -33,34 +33,44 @@ $(document).ready(function(){
 	});
 
 	$(".user-header, #toggleUser").on("click",function(){
-		console.log("Account info toggle clicked.");
-		if($(".user-wrapper").attr("visible") == 1) {
-			console.log("User account area is marked as visible.");
-			$(".user-wrapper").removeClass("user_slideUp");
-			$(".user-wrapper").addClass("user_slideDown");
-			$(".user-caret").removeClass("rotatef");
-			$(".user-caret").addClass("rotateb");
-			$(".user-wrapper").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
-				$(".user-wrapper").attr("visible","0");
-			});
-		} else {
-			console.log("User account area is marked as invisible.");
-			$(".user-wrapper").attr("visible","1");
-			$(".user-wrapper").removeClass("user_slideDown");
-			$(".user-wrapper").addClass("user_slideUp");
-			$(".user-caret").removeClass("rotateb");
-			$(".user-caret").addClass("rotatef");
+		if(!$(".user-header").hasClass("override")) {
+			console.log("Account info toggle clicked.");
+			if($(".user-wrapper").attr("visible") == 1) {
+				console.log("User account area is marked as visible.");
+				$(".user-wrapper").removeClass("user_slideUp");
+				$(".user-wrapper").addClass("user_slideDown");
+				$(".user-caret").removeClass("rotatef");
+				$(".user-caret").addClass("rotateb");
+				$(".user-wrapper").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+					$(".user-wrapper").attr("visible","0");
+				});
+			} else {
+				console.log("User account area is marked as invisible.");
+				$(".user-wrapper").attr("visible","1");
+				$(".user-wrapper").removeClass("user_slideDown");
+				$(".user-wrapper").addClass("user_slideUp");
+				$(".user-caret").removeClass("rotateb");
+				$(".user-caret").addClass("rotatef");
+			}
 		}
 	});
 
 	// menu items
-	$(".menu-item").on("click",function(){
+	$(".menu-item, .user-header").on("click",function(){
 		if($(this).attr("page")) {
 			var element = $(".main-table");
 			element.empty();
 			element.load("includes/views/" + $(this).attr("page") + ".php");
 			$(this).parent().children().removeClass("menu-item-toggled");
 			$(this).addClass("menu-item-toggled");
+		}
+		if($(this).attr("dialog")) {
+			var loadSpot = $(".dialog-load-spot");
+			loadSpot.empty();
+			loadSpot.load("includes/dialogs/" + $(this).attr("dialog"), function(){
+				$(".dialog").addClass("dialog-open");
+				$(".dialog-wrapper").addClass("standard-fadein");
+			});
 		}
 	});
 });
