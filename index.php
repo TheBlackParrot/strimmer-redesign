@@ -50,7 +50,6 @@
 							<td><i class="fa fa-clock-o"></i>&nbsp; Added on</td>
 						</tr>
 					</table>
-					<div class="inf-scroll-load"></div>
 				</div>
 			</div>
 		</div>
@@ -124,6 +123,11 @@
 				<div class="menu-item" id="toggleUser">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle the account panel
+					</span>
+				</div>
+				<div class="menu-item" id="testPlaying">
+					<span class="menu-item-wrapper">
+						<i class="fa fa-cog fa-fw"></i>&nbsp; Mark a row as playing
 					</span>
 				</div>
 			</div>

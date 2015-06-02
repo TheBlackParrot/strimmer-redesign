@@ -183,8 +183,11 @@ h1 {
 }
 .song_row_toggled td {
 	background-color: #3F51B5;
-	color: #fff;
+	color: #fff !important;
 	transition: .25s;
+}
+.song_row_playing td {
+	font-weight: 700 !important;
 }
 .main-table img {
 	width: 46px;
