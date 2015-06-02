@@ -109,14 +109,25 @@ $(".main-table").on("click", "tr", function(e){
 	var trackid = $(this).attr("trackid");
 	var row = strimmer_data.RETURN_DATA[$(this).attr("list_pos")-1];
 
-	$(".info-area").attr("loaded_track",trackid);
+	$(".bg_img_info img").removeClass("standard-fadein");
+	$(".bg_img_info img").addClass("standard-fadeout");
+	$(".bg_img_info img").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+		$(".bg_img_info img").attr("src",row.CACHED_ART);
+		$(".bg_img_info img").removeClass("standard-fadeout");
+		$(".bg_img_info img").addClass("standard-fadein");
+	});
 
-	$(".info-album-art img").attr("src",row.CACHED_ART);
-	$(".bg_img_info img").attr("src",row.CACHED_ART);
-
-	$(".info-stats .title").text(row.TITLE);
-	$(".info-stats .artist").text(row.ARTIST);
-	$(".info-stats .info").text("Added by " + row.ADDED_BY + " from " + row.SERVICE);
+	$(".info-content").removeClass("info-stats-fadein");
+	$(".info-content").addClass("info-stats-fadeout");
+	$(".info-content").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+		$(".info-content .title").html(row.TITLE);
+		$(".info-content .artist").html(row.ARTIST);
+		$(".info-content .info").html("Added by " + row.ADDED_BY + " from " + row.SERVICE);
+		$(".info-album-art img").attr("src",row.CACHED_ART);
+		$(".info-content").removeClass("info-stats-fadeout");
+		$(".info-content").addClass("info-stats-fadein");
+		$(".info-area").attr("loaded_track",trackid);
+	});
 
 	if($(".info-area").attr("visible") != 1) {
 		toggleInfoPanel();

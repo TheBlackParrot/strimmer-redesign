@@ -16,12 +16,14 @@
 		<div class="info-area" visible="0">
 			<div class="info-wrapper">
 				<div class="info-stats" id="toggleInfo">
-					<div class="info-album-art">
-						<img src="images/test/flower.jpg"/>
+					<div class="info-content">
+						<div class="info-album-art">
+							<img src="images/test/flower.jpg"/>
+						</div>
+						<span class="title">Sample Song</span><br/>
+						<span class="artist">Someone</span><br/>
+						<span class="info">Added by TheBlackParrot from SoundCloud</span>
 					</div>
-					<span class="title">Sample Song</span><br/>
-					<span class="artist">Someone</span><br/>
-					<span class="info">Added by TheBlackParrot from SoundCloud</span>
 					<i class="fa fa-caret-down"></i>&nbsp;
 				</div>
 				<div class="info-buttons">
