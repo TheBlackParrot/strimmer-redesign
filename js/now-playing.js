@@ -1,6 +1,7 @@
 var strimmer_host = 'https://strimmer2.theblackparrot.us/api/1.0/';
 var old_result;
 var dominant_color = {r: 63, g: 81, b: 181};
+var playing = 0;
 
 function getStrimmerNowPlaying(verbosity,type,callback) {
 	var url = strimmer_host + 'fetch/playing.php?verbosity=' + encodeURI(verbosity) + '&type=' + encodeURI(type);
@@ -95,6 +96,21 @@ function updateNowPlaying() {
 						$(this).addClass("song_row_playing");
 					}
 				});
+
+				if(getCookie("enbCSP") == 1) {
+					var error = 0;
+					if(getCookie("SCAPIKey") == "" && row.SERVICE == "SDCL") {
+						console.log("No SoundCloud API key detected, please fix this in your settings.");
+						error = 1;
+					}
+					if(getCookie("JMAPIKey") == "" && row.SERVICE == "JMND") {
+						console.log("No Jamendo API key detected, please fix this in your settings.");
+						error = 1;	
+					}
+					if(error == 0) {
+						changeNowPlayingCS(row);
+					}
+				}
 			}
 		}
 	});
@@ -131,5 +147,34 @@ setInterval(function(){
 		$(".elapsed-time").html(lines[1]);
 		$(".progress-bar-filled").css("width",lines[0] + "%");
 		$(".total-time").html(lines[2]);
+		if(lines[0] > 0 && playing == 0) {
+			console.log("change detected");
+			if(getCookie("enbCSP") == 1) {
+				playing = 1;
+				var audio = document.getElementById('audioCSP');
+				if(audio.nodeName == "AUDIO") {
+					audio.play();
+				}
+			}
+		}
 	});
 }, 1000);
+
+function changeNowPlayingCS(row) {
+	$("#audioCSP").remove();
+	playing = 0;
+	switch(row.SERVICE) {
+		case "SDCL":
+			$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '?client_id=' + getCookie("SCAPIKey") + '" preload/>');
+			break;
+		case "JMND":
+			$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '" preload/>');
+			break;
+		case "YTUB":
+			$("body").append('<iframe id="audioCSP" type="text/html" style="display: none;" src="https://www.youtube.com/embed/' + row.SERVICE_ID + '?autoplay=1"');
+			break;
+		default:
+			$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '" preload="auto"/>');
+			break;
+	}
+}

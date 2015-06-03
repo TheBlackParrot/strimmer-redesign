@@ -556,3 +556,7 @@ a .user-menu-item {
 	color: #fff;
 	text-decoration: none;
 }
+
+#audioCSP {
+	display: hidden;
+}
