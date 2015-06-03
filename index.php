@@ -7,7 +7,7 @@
 <head>
 	<link rel="stylesheet" href="css/fonts.css"/>
 	<link rel="stylesheet" href="css/reset.css"/>
-	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/main-dark.css"/>
 	<link rel="stylesheet" href="css/animations.css"/>
 	<link rel="stylesheet" href="css/font-awesome.css"/>
 	<script src="js/jquery.js"></script>
