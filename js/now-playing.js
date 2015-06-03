@@ -97,17 +97,8 @@ function updateNowPlaying() {
 					}
 				});
 
-				if(getCookie("enbCSP") == 1) {
-					var error = 0;
-					if(getCookie("SCAPIKey") == "" && row.SERVICE == "SDCL") {
-						console.log("No SoundCloud API key detected, please fix this in your settings.");
-						error = 1;
-					}
-					if(getCookie("JMAPIKey") == "" && row.SERVICE == "JMND") {
-						console.log("No Jamendo API key detected, please fix this in your settings.");
-						error = 1;	
-					}
-				}
+				playing = 0;
+				$("#audioCSP").remove();
 			}
 		}
 	});
@@ -171,7 +162,7 @@ setInterval(function(){
 						var hms = $(".elapsed-time").text();
 						var a = hms.split(':');
 						var offset = (+a[0]) * 60 + (+a[1]);
-						
+
 						switch(row.SERVICE) {
 							case "SDCL":
 								$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '?client_id=' + getCookie("SCAPIKey") + '" preload/>');
