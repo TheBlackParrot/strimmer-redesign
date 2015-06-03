@@ -136,8 +136,8 @@ $(".main-table").off("click").on("click", "tr", function(e){
 	$(".info-content").removeClass("info-stats-fadein");
 	$(".info-content").addClass("info-stats-fadeout");
 	$(".info-content").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
-		$(".info-content .title").html(row.TITLE);
-		$(".info-content .artist").html(row.ARTIST);
+		$(".info-content .title").html('<a href="' + row.TRACK_PERMALINK + '">' + row.TITLE + '</a>');
+		$(".info-content .artist").html('<a href="' + row.ARTIST_PERMALINK + '">' + row.ARTIST + '</a>');
 		$(".info-content .info").html("Added by " + row.ADDED_BY + " from " + row.SERVICE);
 		$(".info-album-art img").attr("src",row.CACHED_ART);
 		$(".info-content").removeClass("info-stats-fadeout");

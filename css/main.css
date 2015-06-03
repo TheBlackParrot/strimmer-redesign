@@ -551,3 +551,8 @@ a .user-menu-item {
 	position: fixed;
 	top: calc(50vh - 96px);
 }
+
+.title a, .info a, .artist a {
+	color: #fff;
+	text-decoration: none;
+}

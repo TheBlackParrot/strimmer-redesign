@@ -79,8 +79,8 @@ function updateNowPlaying() {
 				$(".playing-info").removeClass("info-stats-fadein");
 				$(".playing-info").addClass("info-stats-fadeout");
 				$(".playing-info").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
-					$(".playing-info .title").html(row.TITLE);
-					$(".playing-info .artist").html(row.ARTIST);
+					$(".playing-info .title").html('<a href="' + row.TRACK_PERMALINK + '">' + row.TITLE + '</a>');
+					$(".playing-info .artist").html('<a href="' + row.ARTIST_PERMALINK + '">' + row.ARTIST + '</a>');
 					$(".playing-info .info").html("Added by " + row.ADDED_BY + " from " + row.SERVICE);
 					$(".playing-album-art img").attr("src",row.CACHED_ART);
 					$(".playing-info").removeClass("info-stats-fadeout");
