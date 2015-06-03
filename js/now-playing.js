@@ -47,29 +47,7 @@ function getStrimmerProgress(type,callback) {
 		}
 	});
 }
-/*
-		<div class="bg_img"><img src="images/test/flower.jpg"/></div>
-		<div class="playing-drawer">
-			<div class="playing-stats">
-				<div class="elapsed-time">0:34</div>
-				<div class="progress-bar-wrapper" style="width: calc(100% - 116px);">
-					<div class="progress-bar-filled" style="width: calc(100% - 86%);"></div>
-					<div class="progress-bar-unfilled" style="width: calc(100%);"></div>
-				</div>
-				<div class="total-time">3:51</div>
-			</div>
-			<div class="playing-wrapper">
-				<div class="playing-album-art">
-					<img src="images/test/flower.jpg"/>
-				</div>
-				<div class="playing-info">
-					<span class="title">Sample Song</span><br/>
-					<span class="artist">Someone</span><br/>
-					<span class="info">Added by TheBlackParrot from SoundCloud</span>
-				</div>
-			</div>
-		</div>
-*/
+
 
 function updateNowPlaying() {
 	getStrimmerNowPlaying("low","none", function(current_result){

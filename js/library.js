@@ -15,11 +15,9 @@ function getStrimmerLibrary(callback) {
 			if(typeof callback === "function") {
 				callback(data);
 			}
-			$(".table-loader-wrapper").remove();
 		},
 		error: function() {
 			console.log("error");
-			$(".table-loader-wrapper").remove();
 		}
 	});
 }

@@ -72,7 +72,16 @@ function addStrimmerRow(row) {
 	joined_str += "<td><img src=\"" + row.CACHED_ART + "\"/></td>";
 	joined_str += "<td>" + row.TITLE + "</td>";
 	joined_str += "<td>" + row.ARTIST + "</td>";
-	joined_str += "<td>" + row.ADDED_BY + "</td>";
+
+	joined_str += "<td>"
+	getUserData(row.ADDED_BY,function(data){
+		getUserColor(data.RANK, function(color){
+			joined_str += "<div class=\"user-rank-list\" style=\"background-color: " + color + ";\"></div>";
+		});
+	});
+	joined_str += row.ADDED_BY;
+	joined_str += "</td>";
+
 	joined_str += "<td>" + getFormattedDate(row.ADDED_ON) + "</td>";
 
 	joined_str += "</tr>";
