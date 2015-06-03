@@ -112,7 +112,7 @@ $(".main-area").scroll(function() {
 	}
 });
 
-$(".main-table").on("click", "tr", function(e){
+$(".main-table").off("click").on("click", "tr", function(e){
 	if($(this).hasClass("table-header")) {
 		return;
 	}
@@ -158,7 +158,7 @@ $(".main-table").on("click", "tr", function(e){
 	e.preventDefault();
 });
 
-$("#testPlaying").on("click", function(){
+$("#testPlaying").off("click").on("click", function(){
 	var random = Math.floor(Math.random()*last_track);
 
 	if(last_playing_row) {

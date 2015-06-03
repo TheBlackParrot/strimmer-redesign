@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("#openDialog").on("click",function(){
+	$("#openDialog").off("click").on("click",function(){
 		var loadSpot = $(".dialog-load-spot");
 		loadSpot.empty();
 		loadSpot.load("includes/test-dialog.html", function(){
@@ -7,7 +7,7 @@ $(document).ready(function(){
 			$(".dialog-wrapper").addClass("standard-fadein");
 		});
 	})
-	$("#closeDialog").on("click",function(){
+	$("#closeDialog").off("click").on("click",function(){
 		var dialog = $(this).parent().parent();
 		dialog.removeClass("dialog-open");
 		dialog.addClass("dialog-close");
