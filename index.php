@@ -11,11 +11,11 @@
 	<link rel="stylesheet" href="css/font-awesome.css"/>
 	<link rel="stylesheet" id="themecss"/>
 	<script src="js/jquery.js"></script>
+	<script src="js/library.js"></script>
+	<script src="js/users.js"></script>
 	<script src="js/ui-interaction.js"></script>
 	<script src="js/dialog.js"></script>
 	<script src="js/now-playing.js"></script>
-	<script src="js/library.js"></script>
-	<script src="js/users.js"></script>
 	<script src="js/color-thief.js"></script>
 	<!--
 	 * Color Thief v2.0
@@ -28,11 +28,14 @@
 	-->
 	<script>
 		var theme_cookie = getCookie("theme");
-		if(theme_cookie) {
+		if(theme_cookie != "") {
 			document.getElementById('themecss').href = "css/" + theme_cookie + ".css";
+		} else {
+			document.getElementById('themecss').href = "css/main.css";
 		}
+		var logged_in = 0;
 		<?php if($_SESSION['login'] == TRUE) { ?>
-			var logged_in = 1;
+			logged_in = 1;
 			var username = <?php echo '"' . $_SESSION['username'] . '";'; ?>;
 		<?php } ?>
 		$(".main-area").append("<div class=\"table-loader-wrapper\"><i class=\"fa fa-circle-o-notch fa-spin table-loader\">&nbsp;</i></div>");
@@ -42,7 +45,8 @@
 				$(".table-loader-wrapper").remove();
 				var dominant_color = {r: 63, g: 81, b: 181};
 				updateNowPlaying();
-				if(logged_in) {
+				if(logged_in == 1) {
+					console.log("user is logged in");
 					getUserData(username,function(data){
 						getUserColor(data.RANK, function(color){
 							$(".user-av").css("border","3px solid " + color);

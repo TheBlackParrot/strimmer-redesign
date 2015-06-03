@@ -40,21 +40,18 @@ function getUserData(user, callback) {
 	}
 }
 
-function getUserColor(user, callback) {
-	getUserData(username,function(data){
-		var rank = data.RANK;
-		var color;
-		switch(rank) {
-			case "1": color = "#2196F3"; break;
-			case "2": color = "#009688"; break;
-			case "3": color = "#8BC34A"; break;
-			case "4": color = "#FFC107"; break;
-			default: color = "#000000"; break;
-		}
-		if(typeof callback === "function") {
-			callback(color);
-		} else {
-			return color;
-		}
-	});
+function getUserColor(rank, callback) {
+	var color;
+	switch(rank) {
+		case "1": color = "#2196F3"; break;
+		case "2": color = "#009688"; break;
+		case "3": color = "#8BC34A"; break;
+		case "4": color = "#FFC107"; break;
+		default: color = "#000000"; break;
+	}
+	if(typeof callback === "function") {
+		callback(color);
+	} else {
+		return color;
+	}
 }
