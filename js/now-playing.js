@@ -153,6 +153,10 @@ setInterval(function(){
 				playing = 1;
 				var audio = document.getElementById('audioCSP');
 				if(audio.nodeName == "AUDIO") {
+					var hms = $(".elapsed-time").text();
+					var a = hms.split(':');
+					var offset = (+a[0]) * 60 + (+a[1]);
+					audio.currentTime = offset;
 					audio.play();
 				}
 			}
@@ -171,7 +175,10 @@ function changeNowPlayingCS(row) {
 			$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '" preload/>');
 			break;
 		case "YTUB":
-			$("body").append('<iframe id="audioCSP" type="text/html" style="display: none;" src="https://www.youtube.com/embed/' + row.SERVICE_ID + '?autoplay=1"');
+			var hms = $(".elapsed-time").text();
+			var a = hms.split(':');
+			var offset = (+a[0]) * 60 + (+a[1]);
+			$("body").append('<iframe id="audioCSP" type="text/html" style="display: none;" src="https://www.youtube.com/embed/' + row.SERVICE_ID + '?autoplay=1&start=' + offset + '"');
 			break;
 		default:
 			$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '" preload="auto"/>');
