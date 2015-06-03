@@ -7,9 +7,9 @@
 <head>
 	<link rel="stylesheet" href="css/fonts.css"/>
 	<link rel="stylesheet" href="css/reset.css"/>
-	<link rel="stylesheet" href="css/main-dark.css"/>
 	<link rel="stylesheet" href="css/animations.css"/>
 	<link rel="stylesheet" href="css/font-awesome.css"/>
+	<link rel="stylesheet" id="themecss"/>
 	<script src="js/jquery.js"></script>
 	<script src="js/ui-interaction.js"></script>
 	<script src="js/dialog.js"></script>
@@ -27,6 +27,10 @@
 	 * http://creativecommons.org/licenses/by/2.5/
 	-->
 	<script>
+		var theme_cookie = getCookie("theme");
+		if(theme_cookie) {
+			document.getElementById('themecss').href = "css/" + theme_cookie + ".css";
+		}
 		<?php if($_SESSION['login'] == TRUE) { ?>
 			var logged_in = 1;
 			var username = <?php echo '"' . $_SESSION['username'] . '";'; ?>;
@@ -184,7 +188,7 @@
 						</span>
 					</div>
 					<div class="user-menu-wrapper">
-						<div class="user-menu-item">
+						<div class="user-menu-item" dialog="settings.php">
 							<span class="user-menu-item-wrapper">
 								<i class="fa fa-cog fa-fw"></i>&nbsp; Settings
 							</span>
