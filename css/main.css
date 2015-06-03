@@ -493,8 +493,10 @@ a .user-menu-item {
 	width: 100%;
 }
 .dialog .button {
-	width: 75px;
+	min-width: 75px;
 	padding: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
 	font-weight: 700;
 	text-align: center;
 	background-color: #303F9F;

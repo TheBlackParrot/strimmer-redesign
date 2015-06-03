@@ -129,7 +129,7 @@
 						<i class="fa fa-history fa-fw"></i>&nbsp; Play History
 					</span>
 				</div>
-				<div class="menu-item menu-item-disabled">
+				<div class="menu-item" dialog="export.php">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-download fa-fw"></i>&nbsp; Export Library
 					</span>
