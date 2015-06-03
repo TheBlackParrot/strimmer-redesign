@@ -107,9 +107,6 @@ function updateNowPlaying() {
 						console.log("No Jamendo API key detected, please fix this in your settings.");
 						error = 1;	
 					}
-					if(error == 0) {
-						changeNowPlayingCS(row);
-					}
 				}
 			}
 		}
@@ -151,37 +148,53 @@ setInterval(function(){
 			console.log("change detected");
 			if(getCookie("enbCSP") == 1) {
 				playing = 1;
-				var audio = document.getElementById('audioCSP');
-				if(audio.nodeName == "AUDIO") {
-					var hms = $(".elapsed-time").text();
-					var a = hms.split(':');
-					var offset = (+a[0]) * 60 + (+a[1]);
-					audio.currentTime = offset;
-					audio.play();
-				}
+				getStrimmerNowPlaying("low","none", function(current_result){
+					library_data.RETURN_DATA.map(function (search) {
+						if(search.STRIMMER_ID == current_result) {
+							index = library_data.RETURN_DATA.indexOf(search);
+							console.log(index);
+						}
+					});
+					var row = library_data.RETURN_DATA[index];
+
+					var error = 0;
+					if(getCookie("SCAPIKey") == "" && row.SERVICE == "SDCL") {
+						console.log("No SoundCloud API key detected, please fix this in your settings.");
+						error = 1;
+					}
+					if(getCookie("JMAPIKey") == "" && row.SERVICE == "JMND") {
+						console.log("No Jamendo API key detected, please fix this in your settings.");
+						error = 1;	
+					}
+
+					if(error == 0) {
+						var hms = $(".elapsed-time").text();
+						var a = hms.split(':');
+						var offset = (+a[0]) * 60 + (+a[1]);
+						
+						switch(row.SERVICE) {
+							case "SDCL":
+								$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '?client_id=' + getCookie("SCAPIKey") + '" preload/>');
+								break;
+							case "JMND":
+								$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '" preload/>');
+								break;
+							case "YTUB":
+								$("body").append('<iframe id="audioCSP" type="text/html" style="display: none;" src="https://www.youtube.com/embed/' + row.SERVICE_ID + '?autoplay=1&start=' + offset + '"/>');
+								break;
+							default:
+								$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '" preload="auto"/>');
+								break;
+						}
+
+						var audio = document.getElementById('audioCSP');
+						if(audio.nodeName == "AUDIO") {
+							audio.currentTime = offset;
+							audio.play();
+						}
+					}
+				});
 			}
 		}
 	});
 }, 1000);
-
-function changeNowPlayingCS(row) {
-	$("#audioCSP").remove();
-	playing = 0;
-	switch(row.SERVICE) {
-		case "SDCL":
-			$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '?client_id=' + getCookie("SCAPIKey") + '" preload/>');
-			break;
-		case "JMND":
-			$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '" preload/>');
-			break;
-		case "YTUB":
-			var hms = $(".elapsed-time").text();
-			var a = hms.split(':');
-			var offset = (+a[0]) * 60 + (+a[1]);
-			$("body").append('<iframe id="audioCSP" type="text/html" style="display: none;" src="https://www.youtube.com/embed/' + row.SERVICE_ID + '?autoplay=1&start=' + offset + '"');
-			break;
-		default:
-			$("body").append('<audio id="audioCSP" src="' + row.API_STREAM + '" preload="auto"/>');
-			break;
-	}
-}
