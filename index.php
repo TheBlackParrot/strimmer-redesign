@@ -1,5 +1,10 @@
 <?php
 	include "includes/session.php";
+	include "includes/functions.php";
+
+	if($_SESSION['login'] == TRUE) {
+		$user = getStrimmerUser();
+	}
 ?>
 
 <html>
@@ -121,7 +126,7 @@
 							<i class="fa fa-user fa-fw"></i>&nbsp; My Music
 						</span>
 					</div>
-					<div class="menu-item menu-item-disabled">
+					<div class="menu-item" page="favorites">
 						<span class="menu-item-wrapper">
 							<i class="fa fa-heart fa-fw"></i>&nbsp; Favorites
 						</span>
@@ -148,14 +153,20 @@
 						<i class="fa fa-download fa-fw"></i>&nbsp; Export Library
 					</span>
 				</div>
-				<?php if($_SESSION['login'] == TRUE) { ?>
-					<hr/>
-					<div class="menu-item menu-item-disabled">
-						<span class="menu-item-wrapper">
-							<i class="fa fa-plus-circle fa-fw"></i>&nbsp; Add a Track
-						</span>
-					</div>
-				<?php } ?>
+				<?php
+					if($_SESSION['login'] == TRUE) {
+						if($user['RANK'] >= 3) {
+				?>
+							<hr/>
+							<div class="menu-item menu-item-disabled">
+								<span class="menu-item-wrapper">
+									<i class="fa fa-plus-circle fa-fw"></i>&nbsp; Add a Track
+								</span>
+							</div>
+				<?php
+						}
+					}
+				?>
 				<hr/>
 				<div class="menu-item menu-item-disabled">
 					<span class="menu-item-wrapper">
