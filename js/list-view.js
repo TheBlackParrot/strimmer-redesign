@@ -75,6 +75,10 @@ function addStrimmerRow(row) {
 
 	joined_str += "<td>"
 	getUserData(row.ADDED_BY,function(data){
+		if(typeof data === "undefined") {
+			data = {};
+			data.RANK = "0";
+		}
 		getUserColor(data.RANK, function(color){
 			joined_str += "<div class=\"user-rank-list\" style=\"background-color: " + color + ";\"></div>";
 		});
