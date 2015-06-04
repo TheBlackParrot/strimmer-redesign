@@ -92,3 +92,15 @@ function setCookie(cname, cvalue, exdays) {
 	var expires = "expires="+d.toUTCString();
 	document.cookie = cname + "=" + cvalue + "; " + expires;
 }
+
+function loadRegisterDialog() {
+	$(".dialog").removeClass("dialog-open");
+	$(".dialog").addClass("dialog-close");
+	$(".dialog").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+		$(".dialog").empty();
+		$(".dialog").load("includes/dialogs/register.php", function(){
+			$(".dialog").removeClass("dialog-close");
+			$(".dialog").addClass("dialog-open");
+		});
+	});
+}

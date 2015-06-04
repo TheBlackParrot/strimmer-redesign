@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/reset.css"/>
 	<link rel="stylesheet" href="css/animations.css"/>
 	<link rel="stylesheet" href="css/font-awesome.css"/>
-	<link rel="stylesheet" id="themecss"/>
+	<link rel="stylesheet" id="themecss" href="css/main.css"/>
 	<script src="js/jquery.js"></script>
 	<script src="js/library.js"></script>
 	<script src="js/users.js"></script>

@@ -7,11 +7,11 @@
 
 	include "$root/config.php";
 
-	$query = 'SELECT USERNAME,LASTACTIVE,RANK FROM user_db';
+	$query = 'SELECT USERNAME,DATE_REGISTERED,RANK FROM user_db';
 	$result = $mysqli->query($query);
 	while($row = $result->fetch_assoc()) {
 		$cur_array['USER'] = $row['USERNAME'];
-		$cur_array['LAST_ACTIVE'] = $row['LASTACTIVE'];
+		$cur_array['DATE_REGISTERED'] = $row['DATE_REGISTERED'];
 		$cur_array['RANK'] = $row['RANK'];
 		$data['RETURN_DATA'][] = $cur_array;
 		unset($cur_array);
@@ -19,7 +19,7 @@
 	}
 
 	$cur_array['USER'] = $prog_title;
-	$cur_array['LAST_ACTIVE'] = 0;
+	$cur_array['DATE_REGISTERED'] = 0;
 	$cur_array['RANK'] = 0;
 	$data['RETURN_DATA'][] = $cur_array;
 	unset($cur_array);

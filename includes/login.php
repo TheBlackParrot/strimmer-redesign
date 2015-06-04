@@ -24,20 +24,35 @@ if(isset($_SESSION['login']) && $_SESSION['login']) {
 }
 
 if(!empty($_POST)) {
-	$username = mysqli_real_escape_string($mysqli,stripslashes(htmlspecialchars($_POST['username'])));
-	$password = mysqli_real_escape_string($mysqli,stripslashes(htmlspecialchars($_POST['password'])));
+	$username = $mysqli->real_escape_string($_POST['username']);
+	$password = $mysqli->real_escape_string($_POST['password']);
 
 	if(strlen($username) >= 4 && strlen($username) < 64) {
 		$query = 'SELECT * FROM user_db WHERE USERNAME="' . $username . '"';
-		$result = mysqli_query($mysqli,$query);
-		if(mysqli_num_rows($result) == 1) {
-			$row = mysqli_fetch_array($result);
-			if($row['PASSWORD'] == hash("sha512",$password . "-:-" . $username)) {
+		$result = $mysqli->query($query);
+		if($result->num_rows == 1) {
+			$row = $result->fetch_assoc();
+
+			if(password_verify($password,$row['PASSWORD_HASH'])) {
+				$query = 'SELECT VERIFY,DATE_REGISTERED FROM user_db WHERE USERNAME="' . $username . '"';
+				$result = $mysqli->query($query);
+				$code_checks = $result->fetch_assoc();
+
+				if($code_checks['VERIFY'] != null && $register['require_verification']) {
+					if(time() - $code_checks['DATE_REGISTERED'] < 1800) {
+						$query = 'DELETE FROM user_db WHERE USERNAME="' . $username . '"';
+						$mysqli->real_query($query);
+
+						die("You must verify within 30 minutes of registering. Please re-register.");
+					} else {
+						die("You must verify your account before you can use $prog_title. Please check your email and your spam folders for a verification message.");
+					}
+				}
 				session_start();
 				$_SESSION['login'] = TRUE;
 				$_SESSION['username'] = $username;
 				$_SESSION['user_id'] = $row['ID'];
-				header("Location: ". $_SESSION['loginrefer']);
+				header("Location: ". $prog_internal_url);
 				exit;
 			} else {
 				$invalid_cred = TRUE;
