@@ -136,8 +136,8 @@ setInterval(function(){
 		$(".progress-bar-filled").css("width",lines[0] + "%");
 		$(".total-time").html(lines[2]);
 		if(lines[0] > 0 && playing == 0) {
-			console.log("change detected");
 			if(getCookie("enbCSP") == 1) {
+				console.log("change detected");
 				playing = 1;
 				getStrimmerNowPlaying("low","none", function(current_result){
 					library_data.RETURN_DATA.map(function (search) {

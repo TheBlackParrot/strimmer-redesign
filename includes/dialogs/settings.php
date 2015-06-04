@@ -25,7 +25,7 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 
 		Jamendo API Key<br/>
 		<input id="JMAPIinput" type="text" onchange="updateJMAPI(this.value);"/><br/>
-		<span class="dialog-caption">Used for client-sided playback of Jamendo tracks.</span>
+		<span class="dialog-caption">Used for client-sided playback of Jamendo tracks. (not <em>currently</em> used)</span>
 
 		<div class="dialog-buttons">
 			<div class="button" id="closeDialog">Cancel</div>

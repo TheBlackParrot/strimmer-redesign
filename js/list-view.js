@@ -125,6 +125,14 @@ $(".main-table").off("click").on("click", "tr", function(e){
 	});
 	var row = library_data.RETURN_DATA[index];
 
+	checkIfFavorite(trackid,function(result){
+		if(result == 1) {
+			$("#favoriteTrack").addClass("is-favorite");
+		} else {
+			$("#favoriteTrack").removeClass("is-favorite");
+		}
+	})
+
 	$(".bg_img_info img").removeClass("standard-fadein");
 	$(".bg_img_info img").addClass("standard-fadeout");
 	$(".bg_img_info img").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){

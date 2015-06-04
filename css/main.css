@@ -455,6 +455,9 @@ a .user-menu-item {
 .info-buttons .fa-heart:hover {
 	color: #E91E63;
 }
+.is-favorite {
+	color: #E91E63 !important;
+}
 .info-buttons .fa-plus-circle:hover {
 	color: #4CAF50;
 }
@@ -562,6 +565,14 @@ a .user-menu-item {
 .dialog-caption {
 	font-size: 8pt;
 	color: #999;
+}
+.dialog-hidden {
+	transition: .5s;
+	color: transparent;
+}
+.dialog-hidden:hover {
+	transition: .5s;
+	color: #222;
 }
 
 
