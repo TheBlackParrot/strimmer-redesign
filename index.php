@@ -82,11 +82,12 @@
 				<?php if($_SESSION['login'] == TRUE) { ?>
 					<div class="info-buttons">
 						<i class="fa fa-heart" id="favoriteTrack"></i>&nbsp;
-						<i class="fa fa-plus-circle"></i>&nbsp;
+						<i class="fa fa-plus-circle" id="queueTrack"></i>&nbsp;
 						<i class="fa fa-pencil"></i>&nbsp;
 						<i class="fa fa-trash"></i>&nbsp;
 					</div>
 					<script src="js/favorite.js.php"></script>
+					<script src="js/queue.js.php"></script>
 					<script>
 						getUserFavorites();
 					</script>

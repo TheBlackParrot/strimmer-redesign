@@ -454,11 +454,20 @@ a .user-menu-item {
 .info-buttons .fa-heart:hover {
 	color: #E91E63;
 }
+.info-buttons .fa-heart:active {
+	text-shadow: 0px 0px 16px #E91E63;
+}
 .is-favorite {
 	color: #E91E63 !important;
 }
 .info-buttons .fa-plus-circle:hover {
 	color: #4CAF50;
+}
+.info-buttons .fa-plus-circle:active {
+	text-shadow: 0px 0px 16px #4CAF50;
+}
+.is-queued {
+	color: #4CAF50 !important;
 }
 .info-buttons .fa-pencil {
 	color: #777;
@@ -468,6 +477,9 @@ a .user-menu-item {
 } */
 .info-buttons .fa-trash:hover {
 	color: #F44336;
+}
+.info-buttons .fa-trash:active {
+	text-shadow: 0px 0px 16px #F44336;
 }
 
 
