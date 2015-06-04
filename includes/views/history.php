@@ -8,6 +8,7 @@
 </tr>
 <script src="js/list-view.js"></script>
 <script>
+	$(".header-wrapper h1").text("Play History");
 	getStrimmerListJSON(0,0,"added","desc","history",function(data){
 		for(i=0;i<50;i++) {
 			addStrimmerRow(data.RETURN_DATA[i]);

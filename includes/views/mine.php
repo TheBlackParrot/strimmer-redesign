@@ -20,6 +20,7 @@
 </tr>
 <script src="js/list-view.js"></script>
 <script>
+	$(".header-wrapper h1").text("My Music");
 	strimmer_data = {};
 	strimmer_data.RETURN_DATA = [];
 	<?php echo 'var user ="' . $user['USERNAME'] . '"'; ?>

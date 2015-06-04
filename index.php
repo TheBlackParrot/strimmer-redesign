@@ -97,7 +97,7 @@
 		<div class="main-area">
 			<div class="content-wrapper">
 				<div class="header-wrapper">
-					<h1>Library</h1>
+					<h1></h1>
 				</div>
 				<div class="main-table-wrapper">
 					<table class="main-table">

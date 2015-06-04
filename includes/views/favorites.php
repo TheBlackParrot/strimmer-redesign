@@ -17,6 +17,7 @@
 </tr>
 <script src="js/list-view.js"></script>
 <script>
+	$(".header-wrapper h1").text("Favorites");
 	strimmer_data = {};
 	strimmer_data.RETURN_DATA = [];
 
