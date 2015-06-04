@@ -13,7 +13,9 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 			<option value="main">Light</option>
 			<option value="main-dark">Dark</option>
 		</select><br/>
-		<span class="dialog-caption"><?php echo $prog_title; ?>'s look and feel.</span>
+		<span class="dialog-caption"><?php echo $prog_title; ?>'s look and feel.</span><br/><br/>
+
+		<input id="enb_pb_smooth" type="checkbox" onchange="updateSmoothPB();"> Enable progress bar smoothing<br/>
 
 		<hr/>
 
@@ -38,7 +40,25 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 <script>
 $("#SCAPIinput").val(getCookie("SCAPIKey"));
 $("#JMAPIinput").val(getCookie("JMAPIKey"));
-$("#enbCSP").prop("checked",getCookie("enbCSP"));
+if(getCookie("enbCSP") != "") {
+	if(getCookie("enbCSP") == "1") {
+		$("#enbCSP").prop("checked",true);
+	} else {
+		$("#enbCSP").prop("checked",false);
+	}
+} else {
+	$("#enbCSP").prop("checked",false);
+}
+
+if(getCookie("smooth_pb") != "") {
+	if(getCookie("smooth_pb") == "1") {
+		$("#enb_pb_smooth").prop("checked",true);
+	} else {
+		$("#enb_pb_smooth").prop("checked",false);
+	}
+} else {
+	$("#enb_pb_smooth").prop("checked",true);
+}
 
 
 function updateSCAPI(value) {
@@ -55,6 +75,17 @@ function updateCSP() {
 		setCookie("enbCSP",0,365);
 		$("#audioCSP").remove();
 	}
+}
+function updateSmoothPB() {
+	var checked = $("#enb_pb_smooth").prop("checked");
+	if(checked == true) {
+		setCookie("smooth_pb",1,365);
+
+	} else {
+		setCookie("smooth_pb",0,365);
+		$("#audioCSP").remove();
+	}
+	$(".progress-bar-filled").css("transition",getCookie("smooth_pb") + "s");
 }
 
 function changeTheme(value) {

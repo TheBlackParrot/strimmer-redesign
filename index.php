@@ -38,18 +38,29 @@
 		} else {
 			document.getElementById('themecss').href = "css/main.css";
 		}
+
 		var logged_in = 0;
 		<?php if($_SESSION['login'] == TRUE) { ?>
 			logged_in = 1;
 			var username = <?php echo '"' . $_SESSION['username'] . '";'; ?>;
 		<?php } ?>
+
 		$(".main-area").append("<div class=\"table-loader-wrapper\"><i class=\"fa fa-circle-o-notch fa-spin table-loader\">&nbsp;</i></div>");
+
 		getStrimmerLibrary(function(){
 			getStrimmerUsers(function(){
 				$(".main-table").load("includes/views/library.php");
 				$(".table-loader-wrapper").remove();
 				var dominant_color = {r: 63, g: 81, b: 181};
 				updateNowPlaying();
+
+				var transition_cookie = getCookie("smooth_pb");
+				if(transition_cookie != "") {
+					$(".progress-bar-filled").css("transition",transition_cookie + "s");
+				} else {
+					$(".progress-bar-filled").css("transition","1s");
+				}
+
 				if(logged_in == 1) {
 					console.log("user is logged in");
 					getUserData(username,function(data){
