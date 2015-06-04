@@ -17,6 +17,6 @@
 <script src="js/dialog.js"></script>
 <script>
 function submitRegister() {
-	document.getElementById("login-info").submit();
+	document.getElementById("register-info").submit();
 }
 </script>
