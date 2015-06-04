@@ -121,11 +121,13 @@
 				</div>
 				<?php if($_SESSION['login'] == TRUE) { ?>
 					<hr/>
-					<div class="menu-item menu-item-disabled">
-						<span class="menu-item-wrapper">
-							<i class="fa fa-user fa-fw"></i>&nbsp; My Music
-						</span>
-					</div>
+					<?php if($user['RANK'] >= 3) { ?>
+						<div class="menu-item" page="mine">
+							<span class="menu-item-wrapper">
+								<i class="fa fa-user fa-fw"></i>&nbsp; My Music
+							</span>
+						</div>
+					<?php } ?>
 					<div class="menu-item" page="favorites">
 						<span class="menu-item-wrapper">
 							<i class="fa fa-heart fa-fw"></i>&nbsp; Favorites
