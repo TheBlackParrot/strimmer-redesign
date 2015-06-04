@@ -133,45 +133,49 @@ $(".main-table").off("click").on("click", "tr", function(e){
 	});
 	var row = library_data.RETURN_DATA[index];
 
-	checkIfFavorite(trackid,function(result){
-		if(result == 1) {
-			$("#favoriteTrack").addClass("is-favorite");
-		} else {
-			$("#favoriteTrack").removeClass("is-favorite");
-		}
-	});
+	if(typeof checkIfFavorite === "function") {
+		checkIfFavorite(trackid,function(result){
+			if(result == 1) {
+				$("#favoriteTrack").addClass("is-favorite");
+			} else {
+				$("#favoriteTrack").removeClass("is-favorite");
+			}
+		});
+	}
 
-	checkIfQueued(trackid,function(result){
-		var element = $("#queueTrack");
-		console.log("checking if " + trackid + " is queued...")
-		if(result == 1) {
-			console.log("it is");
-			canUserQueue("unqueue",trackid,function(data){
-				if(data == 1) {
-					console.log("user can unqueue");
-					element.removeClass("info-buttons-disabled");
-					element.addClass("is-queued");
-				} else {
-					console.log("user cannot unqueue");
-					element.removeClass("is-queued");
-					element.addClass("info-buttons-disabled");
-				}
-			});
-		} else {
-			console.log("it is not");
-			canUserQueue("queue",trackid,function(data){
-				if(data == 1) {
-					console.log("user can queue");
-					element.removeClass("info-buttons-disabled");
-					element.removeClass("is-queued");
-				} else {
-					console.log("user cannot queue");
-					element.removeClass("is-queued");
-					element.addClass("info-buttons-disabled");
-				}
-			});
-		}
-	});
+	if(typeof checkIfQueued === "function") {
+		checkIfQueued(trackid,function(result){
+			var element = $("#queueTrack");
+			console.log("checking if " + trackid + " is queued...")
+			if(result == 1) {
+				console.log("it is");
+				canUserQueue("unqueue",trackid,function(data){
+					if(data == 1) {
+						console.log("user can unqueue");
+						element.removeClass("info-buttons-disabled");
+						element.addClass("is-queued");
+					} else {
+						console.log("user cannot unqueue");
+						element.removeClass("is-queued");
+						element.addClass("info-buttons-disabled");
+					}
+				});
+			} else {
+				console.log("it is not");
+				canUserQueue("queue",trackid,function(data){
+					if(data == 1) {
+						console.log("user can queue");
+						element.removeClass("info-buttons-disabled");
+						element.removeClass("is-queued");
+					} else {
+						console.log("user cannot queue");
+						element.removeClass("is-queued");
+						element.addClass("info-buttons-disabled");
+					}
+				});
+			}
+		});
+	}
 
 	$(".bg_img_info img").removeClass("standard-fadein");
 	$(".bg_img_info img").addClass("standard-fadeout");
