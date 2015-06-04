@@ -8,24 +8,24 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 <div class="dialog-wrapper">
 	<div class="dialog">
 		<span class="header"><?php echo $prog_title; ?> Settings</span>
-		Theme
+		<strong>Theme</strong><br/>
 		<select onchange="changeTheme(this.value);" selected="getCookie('theme');">
 			<option value="main">Light</option>
 			<option value="main-dark">Dark</option>
 		</select><br/>
-		<?php echo $prog_title; ?>'s look and feel.<br/>
+		<span class="dialog-caption"><?php echo $prog_title; ?>'s look and feel.</span>
 
 		<hr/>
 
 		<input id="enbCSP" type="checkbox" onchange="updateCSP();"> Enable client-sided playback<br/><br/>
 
-		SoundCloud API Key
+		SoundCloud API Key<br/>
 		<input id="SCAPIinput" type="text" onchange="updateSCAPI(this.value);"/><br/>
-		Used for client-sided playback of SoundCloud tracks.<br/><br/>
+		<span class="dialog-caption">Used for client-sided playback of SoundCloud tracks.</span><br/><br/>
 
-		Jamendo API Key
+		Jamendo API Key<br/>
 		<input id="JMAPIinput" type="text" onchange="updateJMAPI(this.value);"/><br/>
-		Used for client-sided playback of Jamendo tracks.
+		<span class="dialog-caption">Used for client-sided playback of Jamendo tracks.</span>
 
 		<div class="dialog-buttons">
 			<div class="button" id="closeDialog">Cancel</div>
