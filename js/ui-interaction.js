@@ -104,3 +104,37 @@ function loadRegisterDialog() {
 		});
 	});
 }
+
+function doSearch(value) {
+	var matchString = value.toLowerCase();
+	if(value == null || typeof value === "undefined" || value == "") {
+		return;
+	}
+
+	// OVERWRITE STRIMMER_DATA SO SCROLL SUPPORT CAN WORK
+	// ADD PROPER SEARCH TERMS, E.G. "SOUNDCLOUD", "YOUTUBE", "after MAY 15TH, 2015", ETC.
+
+	strimmer_data = {};
+	strimmer_data.RETURN_DATA = [];
+	position = 0;
+
+	$(".header-wrapper h1").text("Search Results for \"" + value + "\"");
+	$(".song_row").each(function(){
+		$(this).remove();
+	});
+	$(".strimmer-search").val("");
+
+	for(i in library_data.RETURN_DATA) {
+		var data = library_data.RETURN_DATA[i];
+		for(j in data) {
+			var string = data[j];
+			if(typeof string != "undefined" && string != null) {
+				if(string.toLowerCase().indexOf(matchString) != -1){
+					//$(".song_row[trackid=" + data.STRIMMER_ID + "]").show();
+					addStrimmerRow(data);
+					break;
+				}
+			}
+		}
+	}
+}

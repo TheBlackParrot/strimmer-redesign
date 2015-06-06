@@ -115,6 +115,15 @@ h1 {
 .header-wrapper {
 	height: 64px;
 	line-height: 64px;
+	position: fixed;
+	width: calc(100% - 239px);
+	background: #fff;
+	left: 224px;
+	box-shadow: 0px 2px 8px rgba(0,0,0,0.33);
+	z-index: 1;
+}
+.header-wrapper h1 {
+	padding-left: 16px;
 }
 
 .content-wrapper {
@@ -126,6 +135,9 @@ h1 {
 
 .main-table {
 	width: 100%;
+}
+.main-table-wrapper {
+	padding-top: 64px;
 }
 .main-table tr td {
 	padding: 10px;
@@ -202,6 +214,18 @@ h1 {
 	margin-right: 6px;
 	box-shadow: 0px 1px 2px rgba(0,0,0,0.33);
 	border-radius: 100%;
+}
+.search-wrapper {
+	float: right;
+	display: inline-block;
+	position: absolute;
+	right: 16px;
+	top: 0px;
+	width: 25%;
+	min-width: 200px;
+}
+.strimmer-search {
+	width: calc(100% - 22px) !important;
 }
 
 
@@ -543,7 +567,7 @@ a .user-menu-item {
 	padding-bottom: 8px;
 	border-bottom: 1px solid #ddd;
 }
-.dialog select, .dialog input:not([type='checkbox']) {
+select, input:not([type='checkbox']) {
 	background-color: #fff;
 	font-family: "Roboto";
 	font-size: 10pt;
@@ -554,12 +578,12 @@ a .user-menu-item {
 	margin-top: 4px;
 	margin-bottom: 4px;
 }
-.dialog select:active, .dialog input:not([type='checkbox']):active {
+select:active, input:not([type='checkbox']):active {
 	border: 1px solid #3F51B5;
 	box-shadow: 0px 0px 4px #3F51B5;
 	transition: .25s;
 }
-.dialog select:hover, .dialog input:not([type='checkbox']):hover {
+select:hover, input:not([type='checkbox']):hover {
 	border: 1px solid #3F51B5;
 	transition: .25s;
 }
