@@ -107,7 +107,6 @@
 					withCredentials: false
 				},
 				success: function(data) {
-					console.log(typeof data);
 					if(typeof data == "object") {
 						var new_data = data.RETURN_DATA;
 						library_data.RETURN_DATA.push(new_data);
@@ -116,13 +115,13 @@
 							$(this).css("color","#4CAF50");
 						});
 					} else {
-						$(this).text(data);
+						$(this).html("There was an error with adding your track.<br/>" + data.responseText);
 						$(this).css("color","#F44336");
 					}
 				},
-				error: function() {
+				error: function(data) {
 					$(".add-track-status").each(function(){
-						$(this).text("There was an error with adding your track. See the developer console for more information.");
+						$(this).html("There was an error with adding your track. See the developer console for more information.<br/>" + data.responseText);
 						$(this).css("color","#F44336");
 					});
 					console.log("error with adding track");
