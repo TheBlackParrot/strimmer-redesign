@@ -15,6 +15,9 @@
 	<link rel="stylesheet" href="css/animations.css"/>
 	<link rel="stylesheet" href="css/font-awesome.css"/>
 	<link rel="stylesheet" id="themecss" href="css/main.css"/>
+	<?php if($user['RANK'] > 2) { ?>
+		<link rel="stylesheet" href="css/track-dialog.css"/>
+	<?php } ?>
 	<script src="js/jquery.js"></script>
 	<script src="js/library.js"></script>
 	<script src="js/users.js"></script>
@@ -177,7 +180,7 @@
 						if($user['RANK'] >= 3) {
 				?>
 							<hr/>
-							<div class="menu-item menu-item-disabled">
+							<div class="menu-item" dialog="add.php">
 								<span class="menu-item-wrapper">
 									<i class="fa fa-plus-circle fa-fw"></i>&nbsp; Add a Track
 								</span>

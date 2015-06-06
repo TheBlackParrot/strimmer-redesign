@@ -49,6 +49,9 @@
 	}
 
 	function canUserUnqueue($user,$trackid) {
+		include dirname(__FILE__) . "/settings.php";
+		include dirname(__FILE__) . "/session.php";
+
 		if(!isset($trackid)) {
 			http_response_code(400);
 			die("400: Bad request - no track ID");
@@ -87,6 +90,9 @@
 	}
 
 	function canUserQueue($user,$trackid) {
+		include dirname(__FILE__) . "/settings.php";
+		include dirname(__FILE__) . "/session.php";
+		
 		if(!isset($trackid)) {
 			http_response_code(400);
 			die("400: Bad request - no track ID");
