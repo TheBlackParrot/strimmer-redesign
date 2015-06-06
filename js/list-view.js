@@ -59,7 +59,7 @@ function getStrimmerListJSON(offset,amount,sort,order,where,callback) {
 	}
 }
 
-function addStrimmerRow(row) {
+function addStrimmerRow(row,top) {
 	if(!row) {
 		return;
 	}
@@ -68,7 +68,18 @@ function addStrimmerRow(row) {
 
 	position += 1;
 
-	joined_str += "<td>" + position + "</td>";
+	if(!top) {
+		joined_str += "<td>" + position + "</td>";
+	} else {
+		$('.main-table tr td:nth-child(1)').each(function(){
+			var old_pos = parseInt($(this).text());
+			var new_pos = old_pos + 1;
+			$(this).text(new_pos);
+			$(this).parent().attr("list_pos",new_pos);
+		});
+		joined_str += "<td>1</td>";
+	}
+
 	joined_str += "<td><img src=\"" + row.CACHED_ART + "\"/></td>";
 	joined_str += "<td>" + row.TITLE + "</td>";
 	joined_str += "<td>" + row.ARTIST + "</td>";
@@ -89,10 +100,15 @@ function addStrimmerRow(row) {
 	joined_str += "<td>" + getFormattedDate(row.ADDED_ON) + "</td>";
 
 	joined_str += "</tr>";
-	$('.main-table tr:last').after(joined_str);
-	$('.main-table tr:last').attr("trackid",row.STRIMMER_ID);
-	$('.main-table tr:last').attr("list_pos",position);
-
+	if(!top) {
+		$('.main-table tr:last').after(joined_str);
+		$('.main-table tr:last').attr("trackid",row.STRIMMER_ID);
+		$('.main-table tr:last').attr("list_pos",position);
+	} else {
+		$('.main-table tr:nth-child(2)').before(joined_str);
+		$('.main-table tr:nth-child(2)').attr("trackid",row.STRIMMER_ID);
+		$('.main-table tr:nth-child(2)').attr("list_pos",1);
+	}
 	last_track = position+1;
 
 	if(row.STRIMMER_ID == $(".playing-drawer").attr("loaded_track")) {

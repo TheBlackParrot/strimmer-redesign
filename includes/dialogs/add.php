@@ -35,19 +35,19 @@
 		<div class="add-track-content" tab="soundcloud">
 			<form id="soundcloud_form" action="api/1.0/functions/add_soundcloud_track.php" method="GET">
 				Track URL<br/>
-				<input type="text" name="url" placeholder="https://soundcloud.com/account/some-neat-song-title"/>
+				<input class="url-input" type="text" name="url" placeholder="https://soundcloud.com/account/some-neat-song-title"/>
 			</form>
 		</div>
 		<div class="add-track-content" tab="youtube">
 			<form id="youtube_form" action="api/1.0/functions/add_youtube_track.php" method="GET">
 				Video URL<br/>
-				<input type="text" name="url" placeholder="https://youtube.com/watch?v=dQw4w9WgXcQ"/>
+				<input class="url-input" type="text" name="url" placeholder="https://youtube.com/watch?v=dQw4w9WgXcQ"/>
 			</form>
 		</div>
 		<div class="add-track-content" tab="jamendo">
 			<form id="jamendo_form" action="api/1.0/functions/add_jamendo_track.php" method="GET">
 				Track URL<br/>
-				<input type="text" name="url" placeholder="https://www.jamendo.com/en/track/1234567/some-track"/>
+				<input class="url-input" type="text" name="url" placeholder="https://www.jamendo.com/en/track/1234567/some-track"/>
 			</form>
 		</div>
 		<span class="add-track-status"></span>
@@ -95,6 +95,10 @@
 			var form = $("#" + current_tab + "_form");
 			var url_data = form.serialize();
 			var url = strimmer_host + "functions/add_" + current_tab + "_track.php?" + url_data;
+
+			$(".add-track-status").text("Attempting to add your track...");
+			$(".add-track-status").css("color","#000");
+
 			console.log(url);
 
 			// will return a json object that can just be pushed into library_data
@@ -110,10 +114,14 @@
 					if(typeof data == "object") {
 						var new_data = data.RETURN_DATA;
 						library_data.RETURN_DATA.push(new_data);
+						if($(".header-wrapper h1").text() == "Library") {
+							addStrimmerRow(new_data[0],true);
+						}
 						$(".add-track-status").each(function(){
 							$(this).text("Track successfully added!");
 							$(this).css("color","#4CAF50");
 						});
+						$(".url-input").val("");
 					} else {
 						$(this).html("There was an error with adding your track.<br/>" + data.responseText);
 						$(this).css("color","#F44336");
