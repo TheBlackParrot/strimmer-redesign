@@ -23,7 +23,16 @@ if(isset($_SESSION['login']) && $_SESSION['login']) {
 	die();
 }
 
+function checkUsername($username) {
+	$areValid = array('-','_');
+	if(!ctype_alnum(str_replace($areValid, '', $username))) {
+		die("Your username can only contain alphanumeric characters, dashes, and underscores.");
+	}
+}
+
 if(!empty($_POST)) {
+	checkUsername($_POST['username']);
+	
 	$username = $mysqli->real_escape_string($_POST['username']);
 	$password = $mysqli->real_escape_string($_POST['password']);
 

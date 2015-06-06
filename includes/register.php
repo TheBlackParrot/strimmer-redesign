@@ -25,6 +25,15 @@
 	if(!isset($_POST['username'])) {
 		die("No username specified.");
 	}
+
+	function checkUsername($username) {
+		$areValid = array('-','_');
+		if(!ctype_alnum(str_replace($areValid, '', $username))) {
+			die("Your username can only contain alphanumeric characters, dashes, and underscores.");
+		}
+	}
+	checkUsername($username);
+
 	$username = $mysqli->real_escape_string($_POST['username']);
 	$query = 'SELECT USERNAME FROM user_db WHERE USERNAME="' . $username . '"';
 	$result = $mysqli->query($query);
