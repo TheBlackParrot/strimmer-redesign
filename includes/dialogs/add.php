@@ -86,7 +86,7 @@
 	});
 
 	$("#submitTrack").off("click").on("click",function(){
-		if(current_tab != "soundcloud") {
+		if(current_tab == "jamendo") {
 			alert("Currently WIP.");
 			return;
 		}
@@ -112,10 +112,10 @@
 				},
 				success: function(data) {
 					if(typeof data == "object") {
-						var new_data = data.RETURN_DATA;
-						library_data.RETURN_DATA.push(new_data);
+						var new_data = data.RETURN_DATA[0];
+						library_data.RETURN_DATA.unshift(new_data);
 						if($(".header-wrapper h1").text() == "Library") {
-							addStrimmerRow(new_data[0],true);
+							addStrimmerRow(new_data,true);
 						}
 						$(".add-track-status").each(function(){
 							$(this).text("Track successfully added!");

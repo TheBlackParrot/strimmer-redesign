@@ -25,7 +25,7 @@
 
 	if(!isset($_GET['url'])) {
 		http_response_code(400);
-		die("400: Bad request - no track ID");
+		die("400: Bad request - no track URL");
 	}
 
 	function soundcloud_resolveFromURL($track_url) {
@@ -77,7 +77,7 @@
 	}
 
 	$url = urldecode($_GET['url']);
-	$url = $mysqli->real_escape_string($_GET['url']);
+	$url = $mysqli->real_escape_string($url);
 
 	$parsedUrl = parse_url($url);
 
