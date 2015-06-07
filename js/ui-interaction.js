@@ -111,14 +111,11 @@ function doSearch(value) {
 		return;
 	}
 
-	// OVERWRITE STRIMMER_DATA SO SCROLL SUPPORT CAN WORK
-	// ADD PROPER SEARCH TERMS, E.G. "SOUNDCLOUD", "YOUTUBE", "after MAY 15TH, 2015", ETC.
-
 	strimmer_data = {};
 	strimmer_data.RETURN_DATA = [];
 	position = 0;
+	var count = 0;
 
-	$(".header-wrapper h1").text("Search Results for \"" + value + "\"");
 	$(".song_row").each(function(){
 		$(this).remove();
 	});
@@ -131,10 +128,16 @@ function doSearch(value) {
 			if(typeof string != "undefined" && string != null) {
 				if(string.toLowerCase().indexOf(matchString) != -1){
 					//$(".song_row[trackid=" + data.STRIMMER_ID + "]").show();
-					addStrimmerRow(data);
+					strimmer_data.RETURN_DATA.push(data);
+					count++;
+					if(position < 50) {
+						addStrimmerRow(data);
+					}
 					break;
 				}
 			}
 		}
 	}
+
+	$(".header-wrapper h1").text(count + " results for \"" + value + "\"");
 }
