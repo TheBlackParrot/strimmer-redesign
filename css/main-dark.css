@@ -640,3 +640,22 @@ select:hover, input:not([type='checkbox']):hover {
 	color: #fff;
 	text-decoration: none;
 }
+
+#audioCSP {
+	display: hidden;
+}
+
+.errorCode {
+	position: absolute;
+	line-height: 48px;
+	width: 48px;
+	text-align: center;
+	color: #fff;
+	font-weight: 700;
+	font-size: 16pt;
+}
+.error-symbol {
+	font-size: 14pt;
+	position: relative;
+	top: 2px;
+}

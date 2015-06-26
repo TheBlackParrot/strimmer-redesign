@@ -80,8 +80,40 @@ function addStrimmerRow(row,top) {
 		joined_str += "<td>1</td>";
 	}
 
-	joined_str += "<td><img src=\"" + row.CACHED_ART + "\"/></td>";
-	joined_str += "<td>" + row.TITLE + "</td>";
+	var goodResponseCodes = ["302", "200", "201", "203"];
+	var serviceCodes = ["500", "502", "503", "504"];
+	var isValid = 2;
+	if(row.LAST_API_RESPONSE_CODE != null) {
+		if(goodResponseCodes.indexOf(row.LAST_API_RESPONSE_CODE) == -1) {
+			if(serviceCodes.indexOf(row.LAST_API_RESPONSE_CODE) != -1) {
+				isValid = 1;
+			} else {
+				isValid = 0;
+			}
+		}
+	}
+
+	if(isValid != 2) {
+		switch(isValid) {
+			case 0:
+				joined_str += "<td style=\"background-color: #F44336;\"><span class=\"errorCode\">" + row.LAST_API_RESPONSE_CODE + "</span><img style=\"opacity: 0.33;\" src=\"" + row.CACHED_ART + "\"/></td>";
+				joined_str += "<td><i style=\"color: #F44336;\" class=\"fa fa-exclamation-triangle error-symbol\"></i>&nbsp;" + row.TITLE + "</td>";
+				break;
+			case 1:
+				joined_str += "<td style=\"background-color: #2196F3;\"><span class=\"errorCode\">" + row.LAST_API_RESPONSE_CODE + "</span><img style=\"opacity: 0.33;\" src=\"" + row.CACHED_ART + "\"/></td>";
+				joined_str += "<td><i style=\"color: #2196F3;\" class=\"fa fa-question-circle error-symbol\"></i>&nbsp;" + row.TITLE + "</td>";
+				break;
+			default:
+				console.log("This shouldn't be happening.");
+				joined_str += "<td><img src=\"" + row.CACHED_ART + "\"/></td>";
+				joined_str += "<td>" + row.TITLE + "</td>";
+				break;
+		}
+	} else {
+		joined_str += "<td><img src=\"" + row.CACHED_ART + "\"/></td>";
+		joined_str += "<td>" + row.TITLE + "</td>";
+	}
+	
 	joined_str += "<td>" + row.ARTIST + "</td>";
 
 	joined_str += "<td>"
