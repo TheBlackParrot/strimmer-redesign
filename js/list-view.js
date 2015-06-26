@@ -193,6 +193,26 @@ $(".main-table").off("click").on("click", "tr", function(e){
 		});
 	}
 
+	if(typeof username !== "undefined") {
+		var user_data = getUserData(username);
+		var rank = user_data.RANK;
+		var element = $("#removeTrack");
+
+		if(rank == 1) {
+			element.addClass("info-buttons-disabled");
+		}
+		if(rank == 2) {
+			if(row.ADDED_BY != username) {
+				element.addClass("info-buttons-disabled");
+			} else {
+				element.removeClass("info-buttons-disabled");
+			}
+		}
+		if(rank > 2) {
+			element.removeClass("info-buttons-disabled");
+		}
+	}
+
 	$(".bg_img_info img").removeClass("standard-fadein");
 	$(".bg_img_info img").addClass("standard-fadeout");
 	$(".bg_img_info img").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){

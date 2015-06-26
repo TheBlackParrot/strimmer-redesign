@@ -98,7 +98,8 @@
 						<i class="fa fa-heart" id="favoriteTrack"></i>&nbsp;
 						<i class="fa fa-plus-circle" id="queueTrack"></i>&nbsp;
 						<i class="fa fa-pencil"></i>&nbsp;
-						<i class="fa fa-trash"></i>&nbsp;
+						<i class="fa fa-trash" id="removeTrack"></i>&nbsp;
+						<script src="js/remove.js.php"></script>
 						<script src="js/favorite.js.php"></script>
 						<script src="js/queue.js.php"></script>
 						<script>
