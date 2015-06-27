@@ -99,9 +99,11 @@
 						<i class="fa fa-plus-circle" id="queueTrack"></i>&nbsp;
 						<i class="fa fa-pencil"></i>&nbsp;
 						<i class="fa fa-trash" id="removeTrack"></i>&nbsp;
+						<i class="fa fa-check-circle" id="verifyTrack"></i>&nbsp;
 						<script src="js/remove.js.php"></script>
 						<script src="js/favorite.js.php"></script>
 						<script src="js/queue.js.php"></script>
+						<script src="js/verify.js.php"></script>
 						<script>
 							getUserFavorites();
 						</script>
@@ -110,6 +112,7 @@
 						<i class="fa fa-plus-circle info-buttons-disabled"></i>&nbsp;
 						<i class="fa fa-pencil info-buttons-disabled"></i>&nbsp;
 						<i class="fa fa-trash info-buttons-disabled"></i>&nbsp;
+						<i class="fa fa-check-circle info-buttons-disabled"></i>&nbsp;
 					<?php } ?>
 				</div>
 			</div>

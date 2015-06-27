@@ -228,8 +228,8 @@ $(".main-table").off("click").on("click", "tr", function(e){
 	if(typeof username !== "undefined") {
 		var user_data = getUserData(username);
 		var rank = user_data.RANK;
-		var element = $("#removeTrack");
 
+		var element = $("#removeTrack");
 		if(rank == 1) {
 			element.addClass("info-buttons-disabled");
 		}
@@ -242,6 +242,12 @@ $(".main-table").off("click").on("click", "tr", function(e){
 		}
 		if(rank > 2) {
 			element.removeClass("info-buttons-disabled");
+		}
+
+
+		element = $("#verifyTrack");
+		if(rank < 4) {
+			element.addClass("info-buttons-disabled");
 		}
 	}
 
