@@ -95,11 +95,11 @@
 				</div>
 				<div class="info-buttons">
 					<?php if($_SESSION['login'] == TRUE) { ?>
-						<i class="fa fa-heart" id="favoriteTrack"></i>&nbsp;
-						<i class="fa fa-plus-circle" id="queueTrack"></i>&nbsp;
-						<i class="fa fa-pencil"></i>&nbsp;
-						<i class="fa fa-trash" id="removeTrack"></i>&nbsp;
-						<i class="fa fa-check-circle" id="verifyTrack"></i>&nbsp;
+						<i title="Favorite Track" class="fa fa-heart" id="favoriteTrack"></i>&nbsp;
+						<i title="Queue Track" class="fa fa-plus-circle" id="queueTrack"></i>&nbsp;
+						<i title="Edit Metadata" class="fa fa-pencil"></i>&nbsp;
+						<i title="Remove Track" class="fa fa-trash" id="removeTrack"></i>&nbsp;
+						<i title="Verify API Response" class="fa fa-check-circle" id="verifyTrack"></i>&nbsp;
 						<script src="js/remove.js.php"></script>
 						<script src="js/favorite.js.php"></script>
 						<script src="js/queue.js.php"></script>

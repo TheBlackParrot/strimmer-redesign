@@ -185,8 +185,10 @@ $(".main-table").off("click").on("click", "tr", function(e){
 		checkIfFavorite(trackid,function(result){
 			if(result == 1) {
 				$("#favoriteTrack").addClass("is-favorite");
+				$("#favoriteTrack").attr("title","Unfavorite Track");
 			} else {
 				$("#favoriteTrack").removeClass("is-favorite");
+				$("#favoriteTrack").attr("title","Favorite Track");
 			}
 		});
 	}
@@ -198,6 +200,7 @@ $(".main-table").off("click").on("click", "tr", function(e){
 			if(result == 1) {
 				console.log("it is");
 				canUserQueue("unqueue",trackid,function(data){
+					element.attr("title","Unqueue Track");
 					if(data == 1) {
 						console.log("user can unqueue");
 						element.removeClass("info-buttons-disabled");
@@ -211,6 +214,7 @@ $(".main-table").off("click").on("click", "tr", function(e){
 			} else {
 				console.log("it is not");
 				canUserQueue("queue",trackid,function(data){
+					element.attr("title","Queue Track");
 					if(data == 1) {
 						console.log("user can queue");
 						element.removeClass("info-buttons-disabled");

@@ -91,10 +91,12 @@ $("#queueTrack").on("click",function(){
 	if(!element.hasClass("info-buttons-disabled")) {
 		if(element.hasClass("is-queued")) {
 			queueStrimmerTrack("unqueue",trackid,function(){
+				element.attr("title","Queue Track");
 				element.removeClass("is-queued");
 			});
 		} else {
 			queueStrimmerTrack("queue",trackid,function(){
+				element.attr("title","Unqueue Track");
 				element.addClass("is-queued");
 			});
 		}

@@ -63,9 +63,11 @@ $("#favoriteTrack").on("click",function(){
 	favoriteStrimmerTrack(trackid,function(data){
 		if(data == "1") {
 			element.addClass("is-favorite");
+			element.attr("title","Unfavorite Track");
 			favorite_data.RETURN_DATA.push(trackid);
 		} else {
 			element.removeClass("is-favorite");
+			element.attr("title","Favorite Track");
 			favorite_data.RETURN_DATA.pop(trackid);
 		}
 	});
