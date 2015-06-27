@@ -76,6 +76,7 @@ $("#verifyTrack").on("click",function(){
 					art_td.children(".errorCode").remove();
 					art_td.children("img").css("opacity","1");
 					title_td.children(".fa").remove();
+					title_td.html(title_td.html().replace(/&nbsp;/gi,''));
 				}
 			}
 			if(serviceResponseCodes.indexOf(data) != -1) {
@@ -90,7 +91,12 @@ $("#verifyTrack").on("click",function(){
 				}
 
 				title_td.children(".fa").remove();
-				title_td.text().replace("&nbsp;","");
+				
+				// i'm going to assume someone might also run into this issue
+				// http://stackoverflow.com/a/6452789
+				// there's your answer
+				title_td.html(title_td.html().replace(/&nbsp;/gi,''));
+				
 				title_td.prepend("<i style=\"color: #2196F3;\" class=\"fa fa-question-circle error-symbol\"></i>&nbsp;");
 			}
 			if(serviceResponseCodes.indexOf(data) == -1 && goodResponseCodes.indexOf(data) == -1) {
@@ -105,7 +111,7 @@ $("#verifyTrack").on("click",function(){
 				}
 
 				title_td.children(".fa").remove();
-				title_td.text().replace("&nbsp;","");
+				title_td.html(title_td.html().replace(/&nbsp;/gi,''));
 				title_td.prepend("<i style=\"color: #F44336;\" class=\"fa fa-exclamation-triangle error-symbol\"></i>&nbsp;");
 			}	
 			setTimeout(function(){
