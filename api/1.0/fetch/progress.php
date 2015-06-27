@@ -10,10 +10,11 @@
 	// http://stackoverflow.com/questions/11441517/ffmpeg-progress-bar-encoding-percentage-in-php
 
 	// $filename = "$root/ffmpeg_info.txt";
-	$filename = "/srv/http/test/mpd/includes/ffmpeg_info.txt";
+	//$filename = "/srv/http/test/mpd/includes/ffmpeg_info.txt";
+	$filename = "/srv/http/strimmer-data/strimmer_ffmpeg_info.txt";
 	// having to use Strimmer 1.0 here for testing
 	if(!is_file($filename)) {
-	    die(0);
+	    die("Not a file");
 	}
 
 	$content = @file_get_contents($filename);
