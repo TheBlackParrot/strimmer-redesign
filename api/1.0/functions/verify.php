@@ -33,7 +33,7 @@
 	// RETURN_ARG1 -- service ID
 	// RETURN_ARG5 -- API stream link
 
-	$query = 'SELECT SERVICE,RETURN_ARG1,RETURN_ARG5 FROM db_cache WHERE TRACKID="' . $track_id . '"';
+	$query = 'SELECT TRACKID,SERVICE,RETURN_ARG1,RETURN_ARG5 FROM db_cache WHERE TRACKID="' . $track_id . '"';
 	$result = $mysqli->query($query);
 	if($result->num_rows < 1) {
 		http_response_code(400);
