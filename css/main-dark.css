@@ -10,6 +10,9 @@ h1 {
 	font-size: 20pt;
 	font-weight: 300;
 }
+strong {
+	font-weight: 700;
+}
 
 .main-area {
 	overflow: auto;
@@ -665,4 +668,15 @@ select:hover, input:not([type='checkbox']):hover {
 	font-size: 14pt;
 	position: relative;
 	top: 2px;
+}
+
+.color-boxes {
+	text-align: center;
+}
+.color-box {
+	width: 10%;
+	padding: 8px;
+	margin: 8px;
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,0.5);
 }

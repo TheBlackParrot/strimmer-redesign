@@ -15,6 +15,20 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 		</select><br/>
 		<span class="dialog-caption"><?php echo $prog_title; ?>'s look and feel.</span><br/><br/>
 
+		<strong>Color Scheme</strong><br/>
+		<div class="color-boxes">
+			<div class="color-box standard"></div>
+			<div class="color-box bright"></div>
+			<div class="color-box dark"></div>
+			<div class="color-box darker"></div>
+		</div>
+		<div class="color-inputs" style="text-align: center;">
+			<input style="width: 72px;" id="color-input" type="text" placeholder="#3F51B5" onchange="sendColor();"/>
+			<input style="width: 48px;" id="perc-bright" type="text" placeholder="15%" onchange="sendColor();"/>
+			<input style="width: 48px;" id="perc-dark" type="text" placeholder="-15%" onchange="sendColor();"/>
+			<input style="width: 48px;" id="perc-darker" type="text" placeholder="-30%" onchange="sendColor();"/>
+		</div><br/>
+
 		<input id="enb_pb_smooth" type="checkbox" onchange="updateSmoothPB();"> Enable progress bar smoothing<br/>
 
 		<hr/>
@@ -38,6 +52,12 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 <script src="js/dialog.js"></script>
 
 <script>
+$("#color-input").val(getCookie("color-main"));
+$("#perc-bright").val(getCookie("perc-bright"));
+$("#perc-dark").val(getCookie("perc-dark"))
+$("#perc-darker").val(getCookie("perc-darker"))
+sendColor();
+
 $("#SCAPIinput").val(getCookie("SCAPIKey"));
 $("#JMAPIinput").val(getCookie("JMAPIKey"));
 if(getCookie("enbCSP") != "") {
@@ -93,6 +113,7 @@ function changeTheme(value) {
 	if(value != old_theme || old_theme == "") {
 		setCookie("theme",value,365);
 		document.getElementById('themecss').href = "css/" + value + ".css";
+		sendColor();
 	}
 }
 </script>

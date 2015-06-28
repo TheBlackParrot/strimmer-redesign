@@ -25,6 +25,7 @@
 	<script src="js/dialog.js"></script>
 	<script src="js/now-playing.js"></script>
 	<script src="js/color-thief.js"></script>
+	<script src="js/color_change.js"></script>
 	<!--
 	 * Color Thief v2.0
 	 * by Lokesh Dhakar - http://www.lokeshdhakar.com
@@ -41,6 +42,7 @@
 		} else {
 			document.getElementById('themecss').href = "css/main.css";
 		}
+		sendColor();
 
 		var logged_in = 0;
 		<?php if($_SESSION['login'] == TRUE) { ?>
