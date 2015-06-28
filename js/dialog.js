@@ -7,11 +7,14 @@ $(document).ready(function(){
 			$(".dialog-wrapper").addClass("standard-fadein");
 		});
 	})
-	$("#closeDialog").off("click").on("click",function(){
+	$("#closeDialog").off("click").on("click",function(event){
 		closeDialog($(this).parent().parent());
 	});
-	$(".dialog-wrapper").off("click").on("click",function(){
-		closeDialog($(this).children(".dialog"));
+	$(".dialog-wrapper").off("click").on("click",function(event){
+		var clicked_element = event.target;
+		if($(clicked_element).hasClass("dialog-wrapper")) {
+			closeDialog($(this).children(".dialog"));
+		}
 	});
 });
 
