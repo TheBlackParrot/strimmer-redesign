@@ -217,27 +217,6 @@
 						<i class="fa fa-exclamation-triangle fa-fw"></i>&nbsp; DMCA Information
 					</span>
 				</div>
-				<hr/>
-				<div class="menu-item" id="openDialog">
-					<span class="menu-item-wrapper">
-						<i class="fa fa-cog fa-fw"></i>&nbsp; Open a dialog
-					</span>
-				</div>
-				<div class="menu-item" id="toggleInfo">
-					<span class="menu-item-wrapper">
-						<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle the info panel
-					</span>
-				</div>
-				<div class="menu-item" id="toggleUser">
-					<span class="menu-item-wrapper">
-						<i class="fa fa-cog fa-fw"></i>&nbsp; Toggle the account panel
-					</span>
-				</div>
-				<div class="menu-item" id="testPlaying">
-					<span class="menu-item-wrapper">
-						<i class="fa fa-cog fa-fw"></i>&nbsp; Mark a row as playing
-					</span>
-				</div>
 			</div>
 			<div class="user-wrapper" visible="0">
 				<?php if($_SESSION['login'] == TRUE) { ?>
