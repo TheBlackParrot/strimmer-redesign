@@ -29,6 +29,9 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 			<input style="width: 48px;" id="perc-darker" type="text" placeholder="-30%" onchange="sendColor();"/>
 		</div><br/>
 
+		<strong>Font</strong>
+		<input id="font_setting" type="text" onchange="updateFont(this.value);" placeholder="Roboto"/><br/>
+
 		<input id="enb_pb_smooth" type="checkbox" onchange="updateSmoothPB();"> Enable progress bar smoothing<br/>
 
 		<hr/>
@@ -115,5 +118,10 @@ function changeTheme(value) {
 		document.getElementById('themecss').href = "css/" + value + ".css";
 		sendColor();
 	}
+}
+
+function updateFont(value) {
+	$("body").css("font-family",value);
+	setCookie("font",value,365);
 }
 </script>

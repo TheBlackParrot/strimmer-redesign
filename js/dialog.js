@@ -8,16 +8,22 @@ $(document).ready(function(){
 		});
 	})
 	$("#closeDialog").off("click").on("click",function(){
-		var dialog = $(this).parent().parent();
-		dialog.removeClass("dialog-open");
-		dialog.addClass("dialog-close");
-
-		var wrapper = dialog.parent();
-		wrapper.removeClass("standard-fadein");
-		wrapper.addClass("standard-fadeout");
-
-		dialog.one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
-			wrapper.remove();
-		});
+		closeDialog($(this).parent().parent());
+	});
+	$(".dialog-wrapper").off("click").on("click",function(){
+		closeDialog($(this).children(".dialog"));
 	});
 });
+
+function closeDialog(dialog) {
+	dialog.removeClass("dialog-open");
+	dialog.addClass("dialog-close");
+
+	var wrapper = dialog.parent();
+	wrapper.removeClass("standard-fadein");
+	wrapper.addClass("standard-fadeout");
+
+	dialog.one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+		wrapper.remove();
+	});
+}

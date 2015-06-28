@@ -44,6 +44,13 @@
 		}
 		sendColor();
 
+		var font_cookie = getCookie("font");
+		if(font_cookie != "") {
+			$("body").css("font-family",font_cookie);
+		} else {
+			$("body").css("font-family","Roboto");
+		}
+
 		var logged_in = 0;
 		<?php if($_SESSION['login'] == TRUE) { ?>
 			logged_in = 1;
