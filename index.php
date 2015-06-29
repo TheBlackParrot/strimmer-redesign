@@ -221,7 +221,7 @@
 			<div class="user-wrapper" visible="0">
 				<?php if($_SESSION['login'] == TRUE) { ?>
 					<div class="user-header">
-						<img src="locdata/images/avatars/<?php echo $_SESSION['username']; ?>.jpg" class="user-av"/> <?php echo $_SESSION['username']; ?>
+						<img src="api/1.0/fetch/avatar.php" class="user-av"/> <?php echo $_SESSION['username']; ?>
 						<span class="user-caret">
 							<i class="fa fa-caret-up"></i>&nbsp;
 						</span>
