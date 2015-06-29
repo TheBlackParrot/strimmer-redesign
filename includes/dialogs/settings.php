@@ -1,9 +1,8 @@
 <?php
+	$root = dirname(dirname(dirname(__FILE__)));
 
-include_once dirname(dirname(__FILE__)) . "/settings.php";
-include_once dirname(dirname(__FILE__)) . "/session.php";
-
-
+	include "$root/includes/settings.php";
+	include "$root/includes/session.php";
 ?>
 <div class="dialog-wrapper">
 	<div class="dialog">
@@ -30,24 +29,39 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 		</div><br/>
 
 		<strong>Font</strong>
-		<input id="font_setting" type="text" onchange="updateFont(this.value);" placeholder="Roboto"/><br/>
+		<input id="font_setting" type="text" onchange="updateFont(this.value);" placeholder="Roboto"/><br/><br/>
 
 		<input id="enb_pb_smooth" type="checkbox" onchange="updateSmoothPB();"> Enable progress bar smoothing<br/>
 
 		<hr/>
 
-		<input id="enbCSP" type="checkbox" onchange="updateCSP();"> Enable client-sided playback<br/><br/>
+		<!-- this hurts, yes (it makes no sense) -->
+		<div style="display: inline-block;">
+			<strong>Avatar (** PLACEHOLDER **)</strong><br/>
+			<div class="avatar-box" style="background-image: url('api/1.0/fetch/avatar.php');"></div>
+			<div class="dialog-av-content">
+				<form action="" method="" enctype="multipart/form-data">
+					Upload a new avatar:
+					<input type="file" name="fileToUpload" id="fileToUpload"><br/>
+					<input type="submit" value="Upload Image" name="submit">
+				</form>
+			</div>
+		</div><br/>
 
-		SoundCloud API Key<br/>
+		<hr/>
+
+		<strong>SoundCloud API Key</strong><br/>
 		<input id="SCAPIinput" type="text" onchange="updateSCAPI(this.value);"/><br/>
 		<span class="dialog-caption">Used for client-sided playback of SoundCloud tracks.</span><br/><br/>
 
-		Jamendo API Key<br/>
+		<strong>Jamendo API Key</strong><br/>
 		<input id="JMAPIinput" type="text" onchange="updateJMAPI(this.value);"/><br/>
-		<span class="dialog-caption">Used for client-sided playback of Jamendo tracks. (not <em>currently</em> used)</span>
+		<span class="dialog-caption">Used for client-sided playback of Jamendo tracks. (not <em>currently</em> used)</span><br/><br/>
+
+		<input id="enbCSP" type="checkbox" onchange="updateCSP();"> Enable client-sided playback<br/>
 
 		<div class="dialog-buttons">
-			<div class="button" id="closeDialog">Cancel</div>
+			<div class="button" id="closeDialog">Close</div>
 		</div>
 	</div>
 </div>
@@ -60,6 +74,8 @@ $("#perc-bright").val(getCookie("perc-bright"));
 $("#perc-dark").val(getCookie("perc-dark"))
 $("#perc-darker").val(getCookie("perc-darker"))
 sendColor();
+
+$("#font_setting").val(getCookie("font"));
 
 $("#SCAPIinput").val(getCookie("SCAPIKey"));
 $("#JMAPIinput").val(getCookie("JMAPIKey"));
