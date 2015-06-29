@@ -71,7 +71,7 @@ function addStrimmerRow(row,top) {
 	if(!top) {
 		joined_str += "<td>" + position + "</td>";
 	} else {
-		$('.main-table tr td:nth-child(1)').each(function(){
+		$('.main-table .song_row td:nth-child(1)').each(function(){
 			var old_pos = parseInt($(this).text());
 			var new_pos = old_pos + 1;
 			$(this).text(new_pos);
@@ -84,6 +84,9 @@ function addStrimmerRow(row,top) {
 	var serviceCodes = ["500", "502", "503", "504"];
 	var isValid = 2;
 	if(row.LAST_API_RESPONSE_CODE != null) {
+		if(typeof row.LAST_API_RESPONSE_CODE === "number") {
+			row.LAST_API_RESPONSE_CODE = row.LAST_API_RESPONSE_CODE.toString();
+		}
 		if(goodResponseCodes.indexOf(row.LAST_API_RESPONSE_CODE) == -1) {
 			if(serviceCodes.indexOf(row.LAST_API_RESPONSE_CODE) != -1) {
 				isValid = 1;
