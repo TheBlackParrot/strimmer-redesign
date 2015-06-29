@@ -22,20 +22,52 @@ $row = $result->fetch_assoc();
 <div class="dialog-wrapper">
 	<div class="dialog">
 		<span class="header">API Keys</span>
-		Hover over the lines below to see your API keys.<br/><br/>
+		<div class="keys-content">
+			Hover over the lines below to see your API keys.<br/><br/>
 
-		API Key 1<br/>
-		<span class="dialog-hidden"><?php echo $row['API_KEY1']; ?></span><br/><br/>
+			API Key 1<br/>
+			<span class="dialog-hidden"><?php echo $row['API_KEY1']; ?></span><br/><br/>
 
-		API Key 2<br/>
-		<span class="dialog-hidden"><?php echo $row['API_KEY2']; ?></span><br/><br/>
-
-		<span class="dialog-caption">*A feature to request new API keys will be added later on.</span>
-
+			API Key 2<br/>
+			<span class="dialog-hidden"><?php echo $row['API_KEY2']; ?></span><br/><br/>
+		</div>
 		<div class="dialog-buttons">
+			<div class="button" id="resetKeys">Request New Keys</div>
 			<div class="button" id="closeDialog">Back</div>
 		</div>
 	</div>
 </div>
 
 <script src="js/dialog.js"></script>
+<script>
+var strimmer_host = 'https://strimmer2.theblackparrot.us/api/1.0/';
+
+function requestNewKeys(callback) {
+	var url = strimmer_host + 'users/reset_keys.php';
+	$.ajax({
+		type: 'GET',
+		url: url,
+		contentType: 'text/plain',
+		dataType: 'text',
+		xhrFields: {
+			withCredentials: false
+		},
+		success: function(data) {
+			if(typeof callback === "function") {
+				callback(data);
+			}
+		},
+		error: function() {
+			console.log("error");
+		}
+	});
+}
+
+$("#resetKeys").off("click").on("click",function(){
+	requestNewKeys(function(data){
+		$(".keys-content").text(data);
+		$("#closeDialog").text("Close");
+		$("#resetKeys").remove();
+	});
+});
+</script>
