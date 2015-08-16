@@ -1,7 +1,9 @@
 <?php
 	include_once dirname(__FILE__) . "/settings.php";
 
-	session_start();
+	if(session_id() == "") {
+		session_start();
+	}
 
 	if(!isset($_SESSION['login'])) {
 		$_SESSION['login'] = FALSE;

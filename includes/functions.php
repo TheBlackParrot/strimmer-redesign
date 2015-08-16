@@ -160,7 +160,7 @@
 				$data = exec('youtube-dl --restrict-filenames --get-id \'' . $url . '\'');
 				break;
 			case 'StreamLink':
-				$data = exec('youtube-dl --youtube-skip-dash-manifest -g -f mp3/aac/m4a \'' . $url . '\'');
+				$data = exec('youtube-dl --youtube-skip-dash-manifest --no-cache-dir -g -f mp3/aac/m4a \'' . $url . '\'');
 				break;
 			case 'JSON':
 				$data = exec('youtube-dl --restrict-filenames -j \'' . $url . '\'');

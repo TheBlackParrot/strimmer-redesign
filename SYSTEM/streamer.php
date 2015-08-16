@@ -246,6 +246,7 @@
 				if(!in_array($httpCode,$goodCodes) && !in_array($httpCode,$serviceCodes)) {
 					$subject = '[Strimmer] Attempted to play a faulty track (' . $row['TRACKID'] . ')';
 					$message .= "The track was skipped and has been tagged with the error code. It will no longer be played by Strimmer until the issue is resolved.";
+					$message .= "\r\n<b>Attempted URL:</b> " . $stream_link;
 				}
 
 				strimmerLog("Sent out email pertaining to track " . $row['TRACKID']);
