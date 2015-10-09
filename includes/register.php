@@ -32,7 +32,7 @@
 			die("Your username can only contain alphanumeric characters, dashes, and underscores.");
 		}
 	}
-	checkUsername($username);
+	checkUsername(htmlspecialchars($_POST['username']));
 
 	$username = $mysqli->real_escape_string($_POST['username']);
 	$query = 'SELECT USERNAME FROM user_db WHERE USERNAME="' . $username . '"';

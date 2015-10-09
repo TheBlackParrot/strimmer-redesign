@@ -38,6 +38,9 @@
 		case 'low':
 			$cur_array['STRIMMER_ID'] = $tmp['TRACKID'];
 			break;
+		case 'title':
+			$cur_array['TITLE'] = $tmp['RETURN_ARG2'];
+			break;
 		case 'med':
 			$cur_array['STRIMMER_ID'] = $tmp['TRACKID'];
 			$cur_array['SERVICE'] = $tmp['SERVICE'];

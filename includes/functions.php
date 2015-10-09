@@ -1,10 +1,14 @@
 <?php
+	// nginx appears to not send this on my server
+	// API scripts use this script, so including it here should suffice
+	header("Access-Control-Allow-Origin: *");
+
 	function isAllowedUse() {
 		// plz
 		include dirname(__FILE__) . "/settings.php";
 		include dirname(__FILE__) . "/session.php";
 
-		if(!isset($_SESSION['login']) || $_SESSION['login'] == FALSE) {
+		if(isset($_SESSION['login']) && $_SESSION['login'] == FALSE) {
 			$query = 'SELECT API_KEY1,API_KEY2 FROM user_db';
 			$result = $mysqli->query($query);
 			while($row = $result->fetch_assoc()) {

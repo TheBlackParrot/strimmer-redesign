@@ -15,9 +15,15 @@
 	<link rel="stylesheet" href="css/animations.css"/>
 	<link rel="stylesheet" href="css/font-awesome.css"/>
 	<link rel="stylesheet" id="themecss" href="css/main.css"/>
-	<?php if($user['RANK'] > 2) { ?>
-		<link rel="stylesheet" href="css/track-dialog.css"/>
-	<?php } ?>
+	<?php
+		if(isset($user)) {
+			if($user['RANK'] > 2) {
+			?>
+				<link rel="stylesheet" href="css/track-dialog.css"/>
+			<?php
+			}
+		}
+	?>
 	<script src="js/jquery.js"></script>
 	<script src="js/library.js"></script>
 	<script src="js/users.js"></script>
@@ -151,7 +157,7 @@
 		</div>
 		<div class="menu-drawer">
 			<div class="menu-wrapper">
-				<div class="menu-item menu-item-disabled">
+				<div class="menu-item" dialog="listen.php">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-play-circle fa-fw"></i>&nbsp; Listen
 					</span>

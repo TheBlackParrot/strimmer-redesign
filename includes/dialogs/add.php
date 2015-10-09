@@ -4,11 +4,15 @@
 	include dirname(dirname(__FILE__)) . "/functions.php";
 
 	if(!isAllowedUse()) {
+		header('HTTP/1.0 401 Unauthorized');
+		http_response_code(401);
 		die();
 	}
 
 	$user = getStrimmerUser();
 	if($user['RANK'] < 3) {
+		header('HTTP/1.0 401 Unauthorized');
+		http_response_code(401);
 		die("Not allowed.");
 	}
 
