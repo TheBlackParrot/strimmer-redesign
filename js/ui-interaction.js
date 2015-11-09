@@ -1,5 +1,5 @@
 function toggleInfoPanel() {
-	if($(".info-area").attr("visible") == 1) {
+	if($(".info-area").attr("visible") == "1") {
 		console.log("Info area is marked as visible.");
 		$(".info-area").removeClass("main-frame_slideUp");
 		$(".info-area").addClass("main-frame_slideDown");
@@ -7,10 +7,12 @@ function toggleInfoPanel() {
 		$(".bg_img_info").addClass("main-frame_slideDown");
 		$(".song_row_toggled").removeClass("song_row_toggled");
 		$(".info-area").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
-			$(".info-area").hide();
-			$(".info-area").attr("visible","0");
-			$(".bg_img_info").hide();
-			$(".bg_img_info").attr("visible","0");
+			if($(this).hasClass("main-frame_slideDown")) {
+				$(".info-area").hide();
+				$(".bg_img_info").hide();
+				$(".info-area").attr("visible","0");
+				$(".bg_img_info").attr("visible","0");
+			}
 		});
 	} else {
 		console.log("Info area is marked as invisible.");
