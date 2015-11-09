@@ -114,10 +114,10 @@ function addStrimmerRow(row,top) {
 		}
 	} else {
 		joined_str += "<td><img src=\"" + row.CACHED_ART + "\"/></td>";
-		joined_str += "<td>" + row.TITLE + "</td>";
+		joined_str += '<td title="' + row.TITLE + '">' + row.TITLE + "</td>";
 	}
 	
-	joined_str += "<td>" + row.ARTIST + "</td>";
+	joined_str += '<td title="' + row.ARTIST + '">' + row.ARTIST + "</td>";
 
 	joined_str += "<td>"
 	getUserData(row.ADDED_BY,function(data){
@@ -269,8 +269,8 @@ $(".main-table").off("click").on("click", "tr", function(e){
 	$(".info-content").removeClass("info-stats-fadein");
 	$(".info-content").addClass("info-stats-fadeout");
 	$(".info-content").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
-		$(".info-content .title").html('<a href="' + row.TRACK_PERMALINK + '">' + row.TITLE + '</a>');
-		$(".info-content .artist").html('<a href="' + row.ARTIST_PERMALINK + '">' + row.ARTIST + '</a>');
+		$(".info-content .title").html('<a title="' + row.TITLE + '" href="' + row.TRACK_PERMALINK + '">' + row.TITLE + '</a>');
+		$(".info-content .artist").html('<a title="' + row.ARTIST + '" href="' + row.ARTIST_PERMALINK + '">' + row.ARTIST + '</a>');
 		$(".info-content .info").html("Added by " + row.ADDED_BY + " from " + row.SERVICE);
 		$(".info-album-art img").attr("src",row.CACHED_ART);
 		$(".info-content").removeClass("info-stats-fadeout");
