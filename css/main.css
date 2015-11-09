@@ -731,3 +731,19 @@ select:hover, input:not([type='checkbox']):hover {
 	height: 100px;
 	float: left;
 }
+
+.loading-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	color: #000;
+	z-index: 9999;
+	text-align: center;
+}
+.loading-overlay .fa {
+	font-size: 64pt;
+	position: fixed;
+}

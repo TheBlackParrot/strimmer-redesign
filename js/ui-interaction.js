@@ -125,7 +125,7 @@ function doSearch(value) {
 		var data = library_data.RETURN_DATA[i];
 		for(j in data) {
 			var string = data[j];
-			if(typeof string != "undefined" && string != null) {
+			if(typeof string === "string") {
 				if(string.toLowerCase().indexOf(matchString) != -1){
 					//$(".song_row[trackid=" + data.STRIMMER_ID + "]").show();
 					strimmer_data.RETURN_DATA.push(data);

@@ -49,6 +49,7 @@ function getStrimmerProgress(type,callback) {
 	});
 }
 
+var loaded = 0;
 
 function updateNowPlaying() {
 	getStrimmerNowPlaying("low","none", function(current_result){
@@ -99,6 +100,14 @@ function updateNowPlaying() {
 
 				playing = 0;
 				$("#audioCSP").remove();
+
+				if(!loaded) {
+					loaded = 1;
+					$(".loading-overlay").addClass("standard-fadeout");
+					$(".loading-overlay").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+						$(this).hide();
+					});
+				}
 			}
 		}
 	});

@@ -279,6 +279,14 @@
 		</div>
 		<div class="dialog-load-spot"></div>
 	</div>
+	<div class="loading-overlay">
+		<i class="fa fa-circle-o-notch fa-spin"></i>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$(".loading-overlay .fa").css("top", ($(".loading-overlay").height()/2) - $(".loading-overlay .fa").height());
+		});
+	</script>
 </body>
 
 </html>
