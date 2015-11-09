@@ -155,6 +155,21 @@ function sendColor() {
 	setCookie("perc-dark",l1,365);
 	setCookie("perc-darker",l2,365);
 }
+
+// http://stackoverflow.com/a/11868398
+function getContrastYIQ(hexcolor){
+	if(hexcolor.length == 3) {
+		var tmp = hexcolor;
+		hexcolor = tmp[0] + tmp[0] + tmp[1] + tmp[1] + tmp[2] + tmp[2];
+	}
+
+    var r = parseInt(hexcolor.substr(0,2),16);
+    var g = parseInt(hexcolor.substr(2,2),16);
+    var b = parseInt(hexcolor.substr(4,2),16);
+    var yiq = ((r*299)+(g*587)+(b*114))/1000;
+    return (yiq >= 128) ? 'black' : 'white';
+}
+
 function updateColor(color,l,l1,l2) {
 	var css_rules = null;
 	for(var i=0;i<document.styleSheets.length;i++) {
@@ -184,18 +199,22 @@ function updateColor(color,l,l1,l2) {
 		for(var i=0;i<css_rules.length;i++) {
 			if(elements_reg.indexOf(css_rules[i].selectorText) != -1) {
 				css_rules[i].style["background-color"] = "#" + color;
+				css_rules[i].style["color"] = getContrastYIQ(color);
 				continue;
 			}
 			if(elements_darker == css_rules[i].selectorText) {
 				css_rules[i].style["background-color"] = "#" + color_darker
+				css_rules[i].style["color"] = getContrastYIQ(color_darker);
 				continue;
 			}
 			if(elements_dark.indexOf(css_rules[i].selectorText) != -1) {
 				css_rules[i].style["background-color"] = "#" + color_dark;
+				css_rules[i].style["color"] = getContrastYIQ(color_dark);
 				continue;
 			}
 			if(elements_bright.indexOf(css_rules[i].selectorText) != -1) {
 				css_rules[i].style["background-color"] = "#" + color_bright;
+				css_rules[i].style["color"] = getContrastYIQ(color_bright);
 				continue;	
 			}
 		}

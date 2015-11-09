@@ -178,9 +178,9 @@ strong {
 	width: 15%;
 }
 .main-table tr td:nth-child(6), .main-table tr td:nth-child(6) {
-	width: 250px;
-	min-width: 250px;
-	max-width: 250px;
+	width: 180px;
+	min-width: 180px;
+	max-width: 180px;
 }
 .song_row_toggled td {
 	background-color: #3F51B5;
