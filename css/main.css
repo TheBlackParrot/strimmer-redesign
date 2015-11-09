@@ -616,6 +616,12 @@ select:hover, input:not([type='checkbox']):hover {
 .title a, .info a, .artist a {
 	color: #fff;
 	text-decoration: none;
+	text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	max-width: calc(100% - 76px);
+    display: inline-block;
 }
 
 #audioCSP {
