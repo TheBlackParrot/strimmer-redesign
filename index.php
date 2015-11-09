@@ -216,7 +216,7 @@
 					}
 				?>
 				<hr/>
-				<div class="menu-item menu-item-disabled">
+				<div class="menu-item" dialog="about.php">
 					<span class="menu-item-wrapper">
 						<i class="fa fa-info-circle fa-fw"></i>&nbsp; About
 					</span>
