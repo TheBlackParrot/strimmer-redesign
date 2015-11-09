@@ -158,7 +158,7 @@ function sendColor() {
 function updateColor(color,l,l1,l2) {
 	var css_rules = null;
 	for(var i=0;i<document.styleSheets.length;i++) {
-		if(document.styleSheets[i].ownerNode == $("#themecss")[0]) {
+		if(document.styleSheets[i].ownerNode == $("#maincss")[0]) {
 			css_rules = document.styleSheets[i].cssRules;
 			break;
 		}

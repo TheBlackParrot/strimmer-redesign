@@ -103,6 +103,9 @@ function updateNowPlaying() {
 
 				if(!loaded) {
 					loaded = 1;
+					
+					sendColor();
+
 					$(".loading-overlay").addClass("standard-fadeout");
 					$(".loading-overlay").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
 						$(this).hide();

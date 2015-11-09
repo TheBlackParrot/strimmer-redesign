@@ -14,7 +14,8 @@
 	<link rel="stylesheet" href="css/reset.css"/>
 	<link rel="stylesheet" href="css/animations.css"/>
 	<link rel="stylesheet" href="css/font-awesome.css"/>
-	<link rel="stylesheet" id="themecss" href="css/main.css"/>
+	<link rel="stylesheet" id="maincss" href="css/main.css"/>
+	<link rel="stylesheet" id="themecss" href="css/theme_default.css"/>
 	<?php
 		if(isset($user)) {
 			if($user['RANK'] > 2) {
@@ -44,11 +45,13 @@
 	<script>
 		var theme_cookie = getCookie("theme");
 		if(theme_cookie != "") {
-			document.getElementById('themecss').href = "css/" + theme_cookie + ".css";
+			if(theme_cookie == "main") {
+				theme_cookie = "default";
+			}
+			document.getElementById('themecss').href = "css/theme_" + theme_cookie + ".css";
 		} else {
-			document.getElementById('themecss').href = "css/main.css";
+			document.getElementById('themecss').href = "css/theme_default.css";
 		}
-		sendColor();
 
 		var font_cookie = getCookie("font");
 		if(font_cookie != "") {

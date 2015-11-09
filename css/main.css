@@ -1,9 +1,7 @@
 body {
-	background-color: #eee;
 	font-family: "Roboto";
 	font-size: 10pt;
 	line-height: 16pt;
-	color: #222;
 	font-weight: 400;
 }
 h1 {
@@ -25,7 +23,6 @@ strong {
 	position: fixed;
 	left: 224px;
 	z-index: 0;
-	background-color: #eee;
 	top: 0;
 }
 
@@ -73,7 +70,6 @@ strong {
 	position: fixed;
 	top: 0;
 	height: 100vh;
-	background-color: #fff;
 	box-shadow: 0px 0px 8px rgba(0,0,0,0.33);
 	z-index: 5;
 }
@@ -120,7 +116,6 @@ strong {
 	line-height: 64px;
 	position: fixed;
 	width: calc(100% - 239px);
-	background: #fff;
 	left: 224px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.33);
 	z-index: 1;
@@ -133,7 +128,6 @@ strong {
 	padding-left: 16px;
 	padding-right: 16px;
 	padding-bottom: 112px;
-	background: linear-gradient(rgba(255,255,255,0.5) 10%,transparent 20%);
 }
 
 .main-table {
@@ -151,27 +145,17 @@ strong {
 .main-table tr {
 	transition: .075s;
 }
-.main-table tr:nth-child(n+2):nth-child(odd) {
-	background-color: #f0f0f0;
-}
-.main-table tr:nth-child(n+2):nth-child(even) {
-	background-color: #f7f7f7;
-}
 .main-table tr:nth-child(n+2):hover {
-	background-color: #fafaff;
 	transition: .075s;
 }
 .main-table tr:nth-child(1) {
-	border-bottom: 1px solid #ddd;
 	font-weight: 700;
-	color: #aaa;
 }
 .main-table tr td:nth-child(1) {
 	text-align: right;
 	width: 1%;
 }
 .main-table tr:nth-child(n+2) td:nth-child(1) {
-	color: #aaa;
 	font-weight: 700;
 }
 .main-table tr td:nth-child(2) {
@@ -248,17 +232,11 @@ strong {
 }
 .menu-item:hover {
 	transition: .1s;
-	background-color: #ddd;
-	color: #222;
 }
 .menu-item:active, .menu-item-toggled {
 	transition: .05s;
 	background-color: #3F51B5;
 	color: #fff;
-}
-.menu-item-disabled {
-	color: #aaa !important;
-	background-color: #fff !important;
 }
 .menu-wrapper hr {
 	padding: 0;
@@ -521,7 +499,6 @@ a .user-menu-item {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255,255,255,0.33);
 	z-index: 15;
 }
 .dialog {
@@ -530,7 +507,6 @@ a .user-menu-item {
 	max-width: 700px;
 	min-width: 300px;
 	z-index: 16;
-	background-color: #fff;
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -577,26 +553,20 @@ a .user-menu-item {
 	display: block;
 	margin-bottom: 8px;
 	padding-bottom: 8px;
-	border-bottom: 1px solid #ddd;
 }
 select, input:not([type='checkbox']) {
-	background-color: #fff;
 	font-family: "Roboto";
 	font-size: 10pt;
 	padding: 4px;
 	width: 100%;
-	border: 1px solid #ccc;
 	transition: .25s;
 	margin-top: 4px;
 	margin-bottom: 4px;
 }
 select:active, input:not([type='checkbox']):active {
-	border: 1px solid #3F51B5;
-	box-shadow: 0px 0px 4px #3F51B5;
 	transition: .25s;
 }
 select:hover, input:not([type='checkbox']):hover {
-	border: 1px solid #3F51B5;
 	transition: .25s;
 }
 .dialog hr {
@@ -607,11 +577,9 @@ select:hover, input:not([type='checkbox']):hover {
 	margin-top: 16px;
 	margin-bottom: 16px;
 	border: 0;
-	border-bottom: 1px solid #ddd;
 }
 .dialog-caption {
 	font-size: 8pt;
-	color: #999;
 }
 .dialog-hidden {
 	transition: .5s;
@@ -619,7 +587,6 @@ select:hover, input:not([type='checkbox']):hover {
 }
 .dialog-hidden:hover {
 	transition: .5s;
-	color: #222;
 }
 
 
@@ -738,8 +705,6 @@ select:hover, input:not([type='checkbox']):hover {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #fff;
-	color: #000;
 	z-index: 9999;
 	text-align: center;
 }

@@ -9,8 +9,8 @@
 		<span class="header"><?php echo $prog_title; ?> Settings</span>
 		<strong>Theme</strong><br/>
 		<select onchange="changeTheme(this.value);" selected="getCookie('theme');">
-			<option value="main">Light</option>
-			<option value="main-dark">Dark</option>
+			<option value="default">Light</option>
+			<option value="dark">Dark</option>
 		</select><br/>
 		<span class="dialog-caption"><?php echo $prog_title; ?>'s look and feel.</span><br/><br/>
 
@@ -131,7 +131,7 @@ function changeTheme(value) {
 	var old_theme = getCookie("theme");
 	if(value != old_theme || old_theme == "") {
 		setCookie("theme",value,365);
-		document.getElementById('themecss').href = "css/" + value + ".css";
+		document.getElementById('themecss').href = "css/theme_" + value + ".css";
 		sendColor();
 	}
 }
