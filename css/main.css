@@ -19,11 +19,11 @@ strong {
 .main-area {
 	width: calc(100vw - 224px);
 	min-width: 500px;
-	height: calc(100vh - 96px);
+	height: calc(100vh - 160px);
 	position: fixed;
 	left: 224px;
 	z-index: 0;
-	top: 0;
+	top: 64px;
 }
 
 .bg_img_info {
@@ -115,8 +115,9 @@ strong {
 	height: 64px;
 	line-height: 64px;
 	position: fixed;
-	width: calc(100% - 239px);
+	width: calc(100% - 224px);
 	left: 224px;
+	top: 0px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.33);
 	z-index: 1;
 }
@@ -134,7 +135,6 @@ strong {
 	width: 100%;
 }
 .main-table-wrapper {
-	padding-top: 64px;
 }
 .main-table tr td {
 	padding: 10px;

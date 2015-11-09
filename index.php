@@ -136,14 +136,14 @@
 			</div>
 		</div>
 		<div class="main-area">
-			<div class="content-wrapper">
-				<div class="header-wrapper">
-					<h1></h1>
-					<div class="search-wrapper" style="float: right; display: inline-block;">
-						<i class="fa fa-search">&nbsp; </i>
-						<input type="text" class="strimmer-search" placeholder="Search" onchange="doSearch(this.value);"/>
-					</div>
+			<div class="header-wrapper">
+				<h1></h1>
+				<div class="search-wrapper" style="float: right; display: inline-block;">
+					<i class="fa fa-search">&nbsp; </i>
+					<input type="text" class="strimmer-search" placeholder="Search" onchange="doSearch(this.value);"/>
 				</div>
+			</div>
+			<div class="content-wrapper">
 				<div class="main-table-wrapper">
 					<table class="main-table">
 						<tr>

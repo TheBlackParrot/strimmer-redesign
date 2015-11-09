@@ -155,7 +155,7 @@ $(".main-area").scroll(function() {
 	var diff = $(".content-wrapper").height() - $(".main-area").height();
 	var diff2 = $(".main-area").scrollTop() - diff;
 
-	if($(".main-area").scrollTop() - diff >= 112) {
+	if($(".main-area").scrollTop() - diff >= 0) {
 		if(!loading) {
 			loading = 1;
 			var lastload = 50+position;
