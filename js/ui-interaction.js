@@ -58,7 +58,8 @@ $(document).ready(function(){
 	});
 
 	// menu items
-	$(".menu-item, .user-header, .user-menu-item").on("click",function(){
+	// minus the exception of the trackInfo button
+	$(".menu-item, .user-header, .user-menu-item, #trackInfo").on("click",function(){
 		if($(this).attr("page")) {
 			var element = $(".main-table");
 			element.empty();
@@ -142,4 +143,22 @@ function doSearch(value) {
 	}
 
 	$(".header-wrapper h1").text(count + " results for \"" + value + "\"");
+}
+
+function getLongService(service) {
+	switch(service) {
+		case "SDCL":
+			return "SoundCloud";
+			break;
+
+		case "YTUB":
+			return "YouTube";
+			break;
+
+		case "JMND":
+			return "Jamendo";
+			break;
+	}
+	
+	return "Undefined";
 }

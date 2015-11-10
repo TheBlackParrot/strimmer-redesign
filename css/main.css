@@ -37,7 +37,18 @@ strong {
 	right: 0px;
 	background-color: #000;
 }
-.bg_img_info img {
+.bg_img_info_dg {
+	position: fixed;
+	z-index: 3;
+	display: block;
+	width: 100%;
+	height: 96px;
+	overflow: hidden;
+	top: 0;
+	right: 0px;
+	background-color: #000;
+}
+.bg_img_info img, .bg_img_info_dg img {
 	width: 110%;
 	height: auto;
 	-webkit-filter: blur(25px);
@@ -50,6 +61,12 @@ strong {
 	opacity: 1;
 	position: relative;
 	bottom: 50vh;
+}
+.bg_img_info_dg img {
+	-webkit-filter: blur(25px) brightness(0.5);
+	-moz-filter: blur(25px) brightness(0.5);
+	-o-filter: blur(25px) brightness(0.5);
+	-ms-filter: blur(25px) brightness(0.5);
 }
 .info-area {
 	width: calc(100vw - 224px);
@@ -407,6 +424,10 @@ a .user-menu-item {
 	background: -webkit-linear-gradient(to right, transparent, #000);
 	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
 }
+.info-dg-header {
+	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	line-height: 26px;
+}
 .info-stats .title {
 	font-weight: 700;
 	font-size: 12pt;
@@ -414,6 +435,14 @@ a .user-menu-item {
 .info-stats .info {
 	color: #aaa;
 	font-size: 8pt;
+}
+.info-dg-header .title {
+	font-size: 18pt;
+	font-weight: 300;
+}
+.info-dg-header .artist {
+	font-size: 12pt;
+	font-weight: 300;
 }
 .info-stats .fa-caret-down {
 	float: right;
@@ -474,13 +503,10 @@ a .user-menu-item {
 .is-queued {
 	color: #4CAF50 !important;
 }
-.info-buttons .fa-pencil, .info-buttons-disabled {
+.info-buttons-disabled {
 	color: #777 !important;
 	text-shadow: 0 !important;
 }
-/* .info-buttons .fa-pencil:hover {
-	color: #FFC107;
-} */
 .info-buttons .fa-trash:hover {
 	color: #F44336;
 }
@@ -492,6 +518,12 @@ a .user-menu-item {
 }
 .info-buttons .fa-check-circle:active {
 	text-shadow: 0px 0px 16px #2196F3;
+}
+.info-buttons .fa-info-circle:hover {
+	color: #3F51B5;
+}
+.info-buttons .fa-info-circle:active {
+	text-shadow: 0px 0px 16px #3F51B5;
 }
 
 
@@ -513,6 +545,9 @@ a .user-menu-item {
 	transform: translate(-50%, -50%);
 	max-height: 90vh;
 	overflow: auto;
+}
+.dialog a {
+	text-decoration: none;
 }
 .dialog-buttons {
 	text-align: center;
@@ -717,4 +752,17 @@ select:hover, input:not([type='checkbox']):hover {
 .loading-overlay .fa {
 	font-size: 64pt;
 	position: fixed;
+}
+
+.info-table {
+	width: 100%;
+	margin-top: 40px;
+}
+.info-table tr td:nth-child(1) {
+	font-weight: 700;
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 144px;
 }

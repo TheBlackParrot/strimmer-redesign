@@ -115,7 +115,7 @@
 					<?php if($_SESSION['login'] == TRUE) { ?>
 						<i title="Favorite Track" class="fa fa-heart" id="favoriteTrack"></i>&nbsp;
 						<i title="Queue Track" class="fa fa-plus-circle" id="queueTrack"></i>&nbsp;
-						<i title="Edit Metadata" class="fa fa-pencil"></i>&nbsp;
+						<i title="Track Info" class="fa fa-info-circle" id="trackInfo" dialog="info.php"></i>&nbsp;
 						<i title="Remove Track" class="fa fa-trash" id="removeTrack"></i>&nbsp;
 						<i title="Verify API Response" class="fa fa-check-circle" id="verifyTrack"></i>&nbsp;
 						<script src="js/remove.js.php"></script>
@@ -128,7 +128,7 @@
 					<?php } else { ?>
 						<i class="fa fa-heart info-buttons-disabled"></i>&nbsp;
 						<i class="fa fa-plus-circle info-buttons-disabled"></i>&nbsp;
-						<i class="fa fa-pencil info-buttons-disabled"></i>&nbsp;
+						<i class="fa fa-info-circle" id="trackInfo" dialog="info.php"></i>&nbsp;
 						<i class="fa fa-trash info-buttons-disabled"></i>&nbsp;
 						<i class="fa fa-check-circle info-buttons-disabled"></i>&nbsp;
 					<?php } ?>
