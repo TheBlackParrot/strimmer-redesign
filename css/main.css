@@ -62,12 +62,6 @@ strong {
 	position: relative;
 	bottom: 50vh;
 }
-.bg_img_info_dg img {
-	-webkit-filter: blur(25px) brightness(0.5);
-	-moz-filter: blur(25px) brightness(0.5);
-	-o-filter: blur(25px) brightness(0.5);
-	-ms-filter: blur(25px) brightness(0.5);
-}
 .info-area {
 	width: calc(100vw - 224px);
 	min-width: 500px;
@@ -436,14 +430,6 @@ a .user-menu-item {
 	color: #aaa;
 	font-size: 8pt;
 }
-.info-dg-header .title {
-	font-size: 18pt;
-	font-weight: 300;
-}
-.info-dg-header .artist {
-	font-size: 12pt;
-	font-weight: 300;
-}
 .info-stats .fa-caret-down {
 	float: right;
 	line-height: 0px;
@@ -658,7 +644,16 @@ select:hover, input:not([type='checkbox']):hover {
 	max-width: calc(100% - 76px);
     display: inline-block;
 }
-
+.info-dg-header .title a {
+	font-size: 18pt;
+	font-weight: 300;
+	color: inherit;
+}
+.info-dg-header .artist a {
+	font-size: 12pt;
+	font-weight: 300;
+	color: inherit;
+}
 #audioCSP {
 	display: hidden;
 }
@@ -757,6 +752,10 @@ select:hover, input:not([type='checkbox']):hover {
 .info-table {
 	width: 100%;
 	margin-top: 40px;
+	color: inherit;
+}
+.info-table a {
+	color: inherit;
 }
 .info-table tr td:nth-child(1) {
 	font-weight: 700;

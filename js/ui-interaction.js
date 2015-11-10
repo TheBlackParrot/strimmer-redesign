@@ -159,6 +159,6 @@ function getLongService(service) {
 			return "Jamendo";
 			break;
 	}
-	
+
 	return "Undefined";
 }

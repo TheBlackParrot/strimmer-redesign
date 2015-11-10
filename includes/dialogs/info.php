@@ -92,5 +92,36 @@ $(document).ready(function(){
 	$(".info-album-art img").attr("src",row.CACHED_ART);
 	$(".bg_img_info_dg img").attr("src",row.CACHED_ART);
 	$(".info-dg-header").addClass("info-stats-fadein");
+
+	var img = new Image();
+	img.crossOrigin = "Anonymous";
+	img.src = row.CACHED_ART;
+	
+	img.onload = function() {
+		var colorThief = new ColorThief();
+		var colors = colorThief.getColor(img);
+
+		var hex = "";
+		var newc = "";
+		
+		for(i in colors) {
+			newc = colors[i].toString(16);
+			if(newc.length == 1) {
+				newc = "0" + newc;
+			}
+			hex += newc;
+		}
+
+		var YIQ = getContrastYIQ(hex);
+		$(".dialog").css("background-color", "rgb(" + colorThief.getColor(img).toString() + ")");
+		//console.log(hex + " " + YIQ);
+		$(".dialog").css("color", YIQ);
+		$(".dialog-buttons .button").css("background-color", YIQ);
+		if(YIQ == "white") {
+			$(".dialog-buttons .button").css("color", "black");
+		} else {
+			$(".dialog-buttons .button").css("color", "white");
+		}
+	}
 });
 </script>
