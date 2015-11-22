@@ -206,6 +206,7 @@
 			case 'WYZL':
 			case 'JMND':
 			case 'UNDF':
+			case 'URL':
 			case 'HYPE':
 				$stream_link = $row['RETURN_ARG5'];
 				break;

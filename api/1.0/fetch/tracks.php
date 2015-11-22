@@ -112,6 +112,11 @@
 				$cur_array['IS_PLAYING'] = $tmp['PLAYING'];
 				$cur_array['PLAY_COUNT'] = $tmp['PLAY_COUNT'];
 				$cur_array['LAST_API_RESPONSE_CODE'] = $tmp['ERRORCODE'];
+
+				if($tmp['SERVICE'] == "URL") {
+					$cur_array['API_STREAM'] = "N/A";
+				}
+				
 				$data['RETURN_DATA'][] = $cur_array;
 				unset($cur_array);
 				unset($tmp);
@@ -136,6 +141,11 @@
 			$cur_array['IS_PLAYING'] = $tmp['PLAYING'];
 			$cur_array['PLAY_COUNT'] = $tmp['PLAY_COUNT'];
 			$cur_array['LAST_API_RESPONSE_CODE'] = $tmp['ERRORCODE'];
+
+			if($tmp['SERVICE'] == "URL") {
+				$cur_array['API_STREAM'] = "N/A";
+			}
+
 			$data['RETURN_DATA'][] = $cur_array;
 			unset($cur_array);
 			unset($tmp);

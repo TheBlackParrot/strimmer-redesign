@@ -68,6 +68,11 @@
 			$cur_array['LAST_API_RESPONSE_CODE'] = $tmp['ERRORCODE'];
 			break;
 	}
+	if($verbosity == "high") {
+		if($tmp['SERVICE'] == "URL") {
+			$cur_array['API_STREAM'] = "N/A";
+		}
+	}
 	$data['RETURN_DATA'][] = $cur_array;
 	unset($cur_array);
 	unset($tmp);

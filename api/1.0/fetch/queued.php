@@ -72,6 +72,9 @@
 				$cur_array['ARTIST'] = $tmp['RETURN_ARG3'];
 				$cur_array['ARTIST_PERMALINK'] = $tmp['RETURN_ARG4'];
 				$cur_array['API_STREAM'] = $tmp['RETURN_ARG5'];
+				if($tmp['SERVICE'] == "URL") {
+					$cur_array['API_STREAM'] = "N/A";
+				}
 				$cur_array['TRACK_PERMALINK'] = $tmp['RETURN_ARG6'];
 				$cur_array['CACHED_ART'] = $prog_internal_url . "/cache/" . $tmp['TRACKID'] . ".jpg";
 				$cur_array['ART_PERMALINK'] = $tmp['RETURN_ARG7'];
@@ -82,6 +85,7 @@
 				$cur_array['LAST_API_RESPONSE_CODE'] = $tmp['ERRORCODE'];
 				break;
 		}
+
 		$data['RETURN_DATA'][] = $cur_array;
 		unset($cur_array);
 		unset($tmp);

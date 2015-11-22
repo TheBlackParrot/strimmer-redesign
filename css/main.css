@@ -759,7 +759,7 @@ select:hover, input:not([type='checkbox']):hover {
 }
 .info-table tr td:nth-child(1) {
 	font-weight: 700;
-    max-width: 0;
+    max-width: 144px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
