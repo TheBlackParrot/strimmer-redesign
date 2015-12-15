@@ -77,6 +77,11 @@
 		}
 	}
 
+	if($codec == "m4a" || $codec == "aac") {
+		http_response_code(400);
+		die("400: M4A/AAC support is currently being looked at, file headers are not guaranteed to be at the beginning of a file. This is needed for realtime decoding in FFMPEG/LibAV.");
+	}
+
 	if(isset($file_data['format']['tags'])) {
 		$tags = $file_data['format']['tags'];
 	} else {
