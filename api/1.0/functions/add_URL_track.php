@@ -71,8 +71,10 @@
 	$codec = strtolower($file_data['format']['format_name']);
 
 	if(!in_array($codec, $valid_formats)) {
-		http_response_code(400);
-		die("400: Bad request - invalid codec");
+		if(!in_array($file_data['streams'][0]['codec_name'], $valid_formats)) {
+			http_response_code(400);
+			die("400: Bad request - invalid codec");
+		}
 	}
 
 	if(isset($file_data['format']['tags'])) {
