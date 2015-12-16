@@ -101,11 +101,6 @@
 	});
 
 	$("#submitTrack").off("click").on("click",function(){
-		if(current_tab == "jamendo") {
-			alert("Currently WIP.");
-			return;
-		}
-
 		if(current_tab != "") {
 			var form = $("#" + current_tab + "_form");
 			var url_data = form.serialize();

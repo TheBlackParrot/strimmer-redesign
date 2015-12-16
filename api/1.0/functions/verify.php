@@ -44,15 +44,18 @@
 
 	switch($row['SERVICE']) {
 		case 'SDCL':
-			$stream_link = $row['RETURN_ARG5'] . "?client_id=" . $sc_api_key;
+			$stream_link = $row['RETURN_ARG5'] . "?client_id=$sc_api_key";
 			break;
 
 		case 'WYZL':
-		case 'JMND':
 		case 'URL':
 		case 'UNDF':
 		case 'HYPE':
 			$stream_link = $row['RETURN_ARG5'];
+			break;
+
+		case 'JMND':
+			$stream_link = $row['RETURN_ARG5'] . "&client_id=$jm_api_key";
 			break;
 
 		case 'YTUB':
