@@ -158,6 +158,10 @@ function getLongService(service) {
 		case "JMND":
 			return "Jamendo";
 			break;
+
+		case "MODA":
+			return "ModArchive";
+			break;
 	}
 
 	return "Undefined";

@@ -6,7 +6,7 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 $invalid_cred = FALSE;
 
 if(isset($_SESSION['login']) && $_SESSION['login']) {
-	die();
+	die("Already logged in. {$_SESSION['username']}");
 }
 
 ?>

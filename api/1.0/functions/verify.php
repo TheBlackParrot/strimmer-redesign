@@ -51,6 +51,7 @@
 		case 'URL':
 		case 'UNDF':
 		case 'HYPE':
+		case 'MODA':
 			$stream_link = $row['RETURN_ARG5'];
 			break;
 

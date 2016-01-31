@@ -34,6 +34,9 @@
 			<div class="add-track-tab tt-disabled" style="background-color: #702f6f;" load="jamendo">
 				<img src="images/assets/jamendo.png"/>
 			</div>
+			<div class="add-track-tab tt-disabled" style="background-color: #5B6868;" load="modarchive">
+				<img src="images/assets/modarchive.png"/>
+			</div>
 			<div class="add-track-tab tt-disabled" style="background-color: #999;" load="URL">
 				<img src="images/assets/url.png"/>
 			</div>
@@ -55,6 +58,12 @@
 			<form id="jamendo_form" action="api/1.0/functions/add_jamendo_track.php" method="GET">
 				Track URL<br/>
 				<input class="url-input" type="text" name="url" placeholder="https://www.jamendo.com/en/track/1234567/some-track"/>
+			</form>
+		</div>
+		<div class="add-track-content" tab="modarchive">
+			<form id="modarchive_form" action="api/1.0/functions/add_modarchive_track.php" method="GET">
+				Track URL<br/>
+				<input class="url-input" type="text" name="url" placeholder="http://modarchive.org/index.php?request=view_by_moduleid&query=60395"/>
 			</form>
 		</div>
 		<div class="add-track-content" tab="URL">

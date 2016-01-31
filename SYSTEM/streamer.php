@@ -207,6 +207,7 @@
 			case 'UNDF':
 			case 'URL':
 			case 'HYPE':
+			case 'MODA':
 				$stream_link = $row['RETURN_ARG5'];
 				break;
 
@@ -319,7 +320,22 @@
 		$mysqli->real_query($query);
 
 		strimmerLog("Playing track " . $row['TRACKID']);
-		exec($icecast['ffmpeg'] . ' -hide_banner -re -i \'' . $stream_link . '\' -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['qual'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount'] . '" -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['quallq'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mountlq'] . '" -codec:a libopus -vn -strict -2 -vbr on -compression_level 0 -frame_duration 40 -packet_loss 5 -b:a ' . $icecast['qual_opus'] . ' -content_type "audio/ogg" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount_opus'] . '" -codec:a libopus -vn -strict -2 -vbr on -compression_level 0 -frame_duration 40 -packet_loss 5 -b:a ' . $icecast['quallq_opus'] . ' -content_type "audio/ogg" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mountlq_opus'] . '" -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['qual'] . ' -content_type "audio/mpeg3" -filter "compand=0|0:0.2|0.2:-90/-900|-70/-70|-30/-9|0/-3:2:2.9:0:0" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount_exp'] . '" 1> /srv/http/strimmer-data/strimmer_ffmpeg_info.txt 2>&1');
+
+		$execStart = $icecast['ffmpeg'] . ' -hide_banner -re -i ';
+		switch($row['SERVICE']) {
+			case "MODA":
+				// considering filing an issue for URL support
+				// $execStart = 'dumbout -s 48000 -v 0.4 -o - \'' . $stream_link . '\' | ' . $execStart . '-';
+
+				$execStart = $icecast['ffmpeg'] . ' -hide_banner -re -f libmodplug -i ';
+				$execStart .= '\'' . $stream_link . '\'';
+				break;
+
+			default:
+				$execStart .= '\'' . $stream_link . '\'';
+				break;
+		}
+		exec($execStart . ' -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['qual'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount'] . '" -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['quallq'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mountlq'] . '" -codec:a libopus -vn -strict -2 -vbr on -compression_level 0 -frame_duration 40 -packet_loss 5 -b:a ' . $icecast['qual_opus'] . ' -content_type "audio/ogg" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount_opus'] . '" -codec:a libopus -vn -strict -2 -vbr on -compression_level 0 -frame_duration 40 -packet_loss 5 -b:a ' . $icecast['quallq_opus'] . ' -content_type "audio/ogg" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mountlq_opus'] . '" -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['qual'] . ' -content_type "audio/mpeg3" -filter "compand=0|0:0.2|0.2:-90/-900|-70/-70|-30/-9|0/-3:2:2.9:0:0" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount_exp'] . '" 1> /srv/http/strimmer-data/strimmer_ffmpeg_info.txt 2>&1');
 		// needed to start logging commands as of the YouTube update
 		//file_put_contents(dirname(__FILE__) . "/ffmpeg_log.txt",$icecast['ffmpeg'] . ' -hide_banner -re -i \'' . $stream_link . '\' -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['qual'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount'] . '" -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['quallq'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mountlq'] . '" 1> ../includes/ffmpeg_info.txt 2>&1');
 	}
