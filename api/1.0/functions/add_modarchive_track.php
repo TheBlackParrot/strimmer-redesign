@@ -41,6 +41,10 @@
 	// http://modarchive.org/index.php?request=view_by_moduleid&query=60395
 	function getIDFromURL($url) {
 		$query = parse_url($url, PHP_URL_QUERY);
+
+		if(ctype_digit($query)) {
+			return $query;
+		}
 		
 		$queryFragments = explode('&', $query);
 		foreach ($queryFragments as $fragment) {
