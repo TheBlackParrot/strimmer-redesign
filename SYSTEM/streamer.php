@@ -326,11 +326,15 @@
 			// to hell with composer
 
 			$now_playing = "{$row['RETURN_ARG2']} from {$row['RETURN_ARG3']}";
-			$truncated_np = mb_substr($now_playing, 0, 86, 'UTF-8');
 
+			// twurl cuts out tweets after ampersands
+			// hooraaaaay, ruby
+			$twurl_fix = str_replace("&", "and", $now_playing);
+			
+			$truncated_np = mb_substr($twurl_fix, 0, 86, 'UTF-8');
 			$escaped_np = str_replace($original_chars, $escaped_chars, $truncated_np);
 
-			exec($twitter['twurl_location'] . '/twurl -q -d "status=#NowPlaying ' . $escaped_np . ' on Strimmer http://' . $icecast['public_url'] . '" /1.1/statuses/update.json');
+			exec($twitter['twurl_location'] . '/twurl -q --raw-data "status=#NowPlaying ' . $escaped_np . ' on Strimmer http://' . $icecast['public_url'] . '" /1.1/statuses/update.json');
 		}
 
 		$execStart = $icecast['ffmpeg'] . ' -hide_banner -re -i ';
