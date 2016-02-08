@@ -273,28 +273,6 @@
 		}
 		curl_close($curl);
 
-		$url_str = $row['RETURN_ARG3'] . " - " . $row['RETURN_ARG2'];
-
-		putenv("ICHOST=" . $icecast['host']);
-		putenv("ICPORT=" . $icecast['port']);
-		putenv("ICMOUNT=" . $icecast['mount']);
-		putenv("ICMOUNT_LQ=" . $icecast['mountlq']);
-		putenv("ICMOUNT_OPUS=" . $icecast['mount_opus']);
-		putenv("ICMOUNT_LQ_OPUS=" . $icecast['mountlq_opus']);
-		putenv("ICADMIN_USER=" . $icecast['admin_user']);
-		putenv("ICADMIN_PASS=" . $icecast['admin_pass']);
-
-		$icecast['mount_exp'] = "stream_experimental.mp3";
-		putenv("ICMOUNT_EXP=" . $icecast['mount_exp']);
-
-		// anything i'm trying to do involving escaping flat out fails, so i caved and i'm doing this -.-
-		$original_chars = array('\\','$','"');
-		$escaped_chars = array('\\\\','\$','\"');
-		$cmd_str = str_replace($original_chars, $escaped_chars, $url_str);
-		exec('./metadata_upd "' . $cmd_str . '" > /dev/null 2>&1 &');
-
-		strimmerLog("Updated stream metadata: $cmd_str");
-
 		$time = time();
 
 		$query = 'SELECT TRACKID FROM play_history';
@@ -330,19 +308,16 @@
 			// twurl cuts out tweets after ampersands
 			// hooraaaaay, ruby
 			$twurl_fix = str_replace("&", "and", $now_playing);
-			
+
 			$truncated_np = mb_substr($twurl_fix, 0, 86, 'UTF-8');
 			$escaped_np = str_replace($original_chars, $escaped_chars, $truncated_np);
 
-			exec($twitter['twurl_location'] . '/twurl -q --raw-data "status=#NowPlaying ' . $escaped_np . ' on Strimmer http://' . $icecast['public_url'] . '" /1.1/statuses/update.json');
+			exec($twitter['twurl_location'] . '/twurl -q -d "status=#NowPlaying ' . $escaped_np . ' on Strimmer http://' . $icecast['public_url'] . '" /1.1/statuses/update.json');
 		}
 
 		$execStart = $icecast['ffmpeg'] . ' -hide_banner -re -i ';
 		switch($row['SERVICE']) {
 			case "MODA":
-				// considering filing an issue for URL support
-				// $execStart = 'dumbout -s 48000 -v 0.4 -o - \'' . $stream_link . '\' | ' . $execStart . '-';
-
 				$execStart = $icecast['ffmpeg'] . ' -hide_banner -re -f libmodplug -i ';
 				$execStart .= '\'' . $stream_link . '\'';
 				break;
@@ -351,8 +326,46 @@
 				$execStart .= '\'' . $stream_link . '\'';
 				break;
 		}
-		exec($execStart . ' -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['qual'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount'] . '" -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['quallq'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mountlq'] . '" -codec:a libopus -vn -strict -2 -vbr on -compression_level 0 -frame_duration 40 -packet_loss 5 -b:a ' . $icecast['qual_opus'] . ' -content_type "audio/ogg" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount_opus'] . '" -codec:a libopus -vn -strict -2 -vbr on -compression_level 0 -frame_duration 40 -packet_loss 5 -b:a ' . $icecast['quallq_opus'] . ' -content_type "audio/ogg" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mountlq_opus'] . '" -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['qual'] . ' -content_type "audio/mpeg3" -filter "compand=0|0:0.2|0.2:-90/-900|-70/-70|-30/-9|0/-3:2:2.9:0:0" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount_exp'] . '" 1> /srv/http/strimmer-data/strimmer_ffmpeg_info.txt 2>&1');
-		// needed to start logging commands as of the YouTube update
-		//file_put_contents(dirname(__FILE__) . "/ffmpeg_log.txt",$icecast['ffmpeg'] . ' -hide_banner -re -i \'' . $stream_link . '\' -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['qual'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mount'] . '" -codec:a libmp3lame -vn -strict -2 -q ' . $icecast['quallq'] . ' -content_type "audio/mpeg3" "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $icecast['mountlq'] . '" 1> ../includes/ffmpeg_info.txt 2>&1');
+
+		$final_command = $execStart;
+
+		$stream_count = count($stream['outputs']);
+		$stream_output_mounts = array_keys($stream['outputs']);
+
+		$url_str = $row['RETURN_ARG3'] . " - " . $row['RETURN_ARG2'];
+
+		putenv("ICHOST=" . $icecast['host']);
+		putenv("ICPORT=" . $icecast['port']);
+		putenv("ICADMIN_USER=" . $icecast['admin_user']);
+		putenv("ICADMIN_PASS=" . $icecast['admin_pass']);
+
+		// anything i'm trying to do involving escaping flat out fails, so i caved and i'm doing this -.-
+		$original_chars = array('\\','$','"');
+		$escaped_chars = array('\\\\','\$','\"');
+		$cmd_str = str_replace($original_chars, $escaped_chars, $url_str);
+
+		strimmerLog("Updated stream metadata: $cmd_str");
+		
+		if(isset($stream['filter'])) {
+			if($stream['filter'] != "") {
+				$filter = $stream['filter'];
+				
+				$filter = str_replace("%%STREAM_COUNT%%", $stream_count, $filter);
+				$filter = str_replace("%%STREAM_OUTPUTS_FILTER%%", "[" . implode("][", $stream_output_mounts) . "]", $filter);
+				
+				$final_command .= " $filter";
+			}
+		}
+
+		foreach ($stream['outputs'] as $mount => $output) {
+			$final_output = str_replace("%%MOUNT%%", $mount, $output);
+			$final_command .= " $final_output";
+
+			$final_command .= ' "icecast://source:' . $icecast['pass'] . '@' . $icecast['host'] . ':' . $icecast['port'] . '/' . $mount . '"';
+
+			exec('./metadata_upd "' . $cmd_str . '" "' . $mount . '" > /dev/null 2>&1 &');
+		}
+
+		exec($final_command . ' 1> /srv/http/strimmer-data/strimmer_ffmpeg_info.txt 2>&1');
 	}
 ?>
