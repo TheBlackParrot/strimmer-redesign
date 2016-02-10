@@ -5,8 +5,11 @@ include_once dirname(dirname(__FILE__)) . "/session.php";
 
 $invalid_cred = FALSE;
 
-if(isset($_SESSION['login']) && $_SESSION['login']) {
-	die("Already logged in. {$_SESSION['username']}");
+if(isset($_SESSION['login']))
+	if($_SESSION['login']) {
+		http_response_code(409);
+		die("Already logged in. {$_SESSION['username']}");
+	}
 }
 
 ?>
