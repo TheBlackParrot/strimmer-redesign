@@ -312,7 +312,7 @@
 			$truncated_np = mb_substr($twurl_fix, 0, 86, 'UTF-8');
 			$escaped_np = str_replace($original_chars, $escaped_chars, $truncated_np);
 
-			exec($twitter['twurl_location'] . '/twurl -q -d "status=#NowPlaying ' . $escaped_np . ' on Strimmer http://' . $icecast['public_url'] . '" /1.1/statuses/update.json');
+			exec($twitter['twurl_location'] . '/twurl -q -d "status=#NowPlaying ' . $escaped_np . ' on Strimmer http://' . $icecast['interface_url'] . '" /1.1/statuses/update.json');
 		}
 
 		$execStart = $icecast['ffmpeg'] . ' -hide_banner -re -i ';

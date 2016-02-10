@@ -38,6 +38,8 @@ $mysqli = new mysqli($sql['host'], $sql['user'], $sql['pass'], $sql['db'], $sql[
 $icecast['host'] = "localhost";
 // public facing url
 $icecast['public_url'] = "radio.example.us";
+// used in tweets, set to $icecast['public_url'] if no custom interface exists
+$icecast['interface_url'] = "interface.example.us";
 $icecast['port'] = 8000;
 // source password
 $icecast['pass'] = "source_password";
